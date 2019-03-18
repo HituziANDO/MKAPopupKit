@@ -7,7 +7,7 @@ MKAPopup
 
 ## Requirements
 
-- Swift 4+
+- Swift 4.2+
 
 ## Installation
 
