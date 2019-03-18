@@ -212,6 +212,7 @@ public class MKAPopup: UIView {
     }
 }
 
+@objc
 public protocol MKAPopupDelegate: class {
 
     func popupDidAppear(_ popup: MKAPopup)
