@@ -3,8 +3,7 @@ MKAPopup
 
 ***MKAPopup is simple and customizable popup view written in Swift for iOS.***
 
-<img src="./README/popup1.gif" width="200"/>
-<img src="./README/popup2.gif" width="200"/>
+<img src="./README/popup1.gif" width="200"/> <img src="./README/popup2.gif" width="200"/>
 
 ## Requirements
 
