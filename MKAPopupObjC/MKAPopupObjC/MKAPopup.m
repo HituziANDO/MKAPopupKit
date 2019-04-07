@@ -81,7 +81,12 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    [self.titleLabel sizeToFit];
+    if (self.titleLabel.text.length > 0) {
+        [self.titleLabel sizeToFit];
+    }
+    else {
+        self.titleLabel.bounds = CGRectZero;
+    }
 
     self.titleLabel.center = CGPointMake(self.frame.size.width / 2.f, self.titleLabel.frame.size.height / 2.f);
     self.containerView.frame = CGRectMake(0,

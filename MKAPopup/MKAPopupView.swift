@@ -72,6 +72,9 @@ public class MKAPopupView: UIView {
         if let title = titleLabel.text, !title.isEmpty {
             titleLabel.sizeToFit()
         }
+        else {
+            titleLabel.bounds = .zero
+        }
 
         titleLabel.center = CGPoint(x: frame.width / 2.0, y: titleLabel.frame.height / 2.0)
         containerView.frame = CGRect(x: 0,
