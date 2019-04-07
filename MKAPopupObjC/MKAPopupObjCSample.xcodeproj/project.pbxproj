@@ -15,6 +15,23 @@
 		5E95718922572B14009C37CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95718822572B14009C37CA /* main.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5E95719822578A84009C37CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E95719422578A84009C37CA /* MKAPopupObjC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5E95716222572AC4009C37CA;
+			remoteInfo = MKAPopupObjC;
+		};
+		5E95719A22578A98009C37CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E95719422578A84009C37CA /* MKAPopupObjC.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E95716122572AC4009C37CA;
+			remoteInfo = MKAPopupObjC;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5E95717622572B12009C37CA /* MKAPopupObjCSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKAPopupObjCSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E95717922572B12009C37CA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +43,7 @@
 		5E95718522572B14009C37CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E95718722572B14009C37CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E95718822572B14009C37CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5E95719422578A84009C37CA /* MKAPopupObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MKAPopupObjC.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +60,7 @@
 		5E95716D22572B12009C37CA = {
 			isa = PBXGroup;
 			children = (
+				5E95719422578A84009C37CA /* MKAPopupObjC.xcodeproj */,
 				5E95717822572B12009C37CA /* MKAPopupObjCSample */,
 				5E95717722572B12009C37CA /* Products */,
 			);
@@ -71,6 +90,14 @@
 			path = MKAPopupObjCSample;
 			sourceTree = "<group>";
 		};
+		5E95719522578A84009C37CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E95719922578A84009C37CA /* MKAPopupObjC.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,6 +112,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5E95719B22578A98009C37CA /* PBXTargetDependency */,
 			);
 			name = MKAPopupObjCSample;
 			productName = MKAPopupObjCSample;
@@ -116,12 +144,28 @@
 			mainGroup = 5E95716D22572B12009C37CA;
 			productRefGroup = 5E95717722572B12009C37CA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5E95719522578A84009C37CA /* Products */;
+					ProjectRef = 5E95719422578A84009C37CA /* MKAPopupObjC.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5E95717522572B12009C37CA /* MKAPopupObjCSample */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5E95719922578A84009C37CA /* MKAPopupObjC.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MKAPopupObjC.framework;
+			remoteRef = 5E95719822578A84009C37CA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5E95717422572B12009C37CA /* Resources */ = {
@@ -148,6 +192,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5E95719B22578A98009C37CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MKAPopupObjC;
+			targetProxy = 5E95719A22578A98009C37CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5E95717F22572B12009C37CA /* Main.storyboard */ = {

@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		5E95716722572AC4009C37CA /* MKAPopupObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E95716522572AC4009C37CA /* MKAPopupObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E95719E22578B38009C37CA /* MKAPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E95719C22578B38009C37CA /* MKAPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E95719F22578B38009C37CA /* MKAPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95719D22578B38009C37CA /* MKAPopup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5E95716222572AC4009C37CA /* MKAPopupObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKAPopupObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E95716522572AC4009C37CA /* MKAPopupObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAPopupObjC.h; sourceTree = "<group>"; };
 		5E95716622572AC4009C37CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E95719C22578B38009C37CA /* MKAPopup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAPopup.h; sourceTree = "<group>"; };
+		5E95719D22578B38009C37CA /* MKAPopup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKAPopup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			isa = PBXGroup;
 			children = (
 				5E95716622572AC4009C37CA /* Info.plist */,
+				5E95719C22578B38009C37CA /* MKAPopup.h */,
+				5E95719D22578B38009C37CA /* MKAPopup.m */,
 				5E95716522572AC4009C37CA /* MKAPopupObjC.h */,
 			);
 			path = MKAPopupObjC;
@@ -60,6 +66,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E95716722572AC4009C37CA /* MKAPopupObjC.h in Headers */,
+				5E95719E22578B38009C37CA /* MKAPopup.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E95719F22578B38009C37CA /* MKAPopup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
