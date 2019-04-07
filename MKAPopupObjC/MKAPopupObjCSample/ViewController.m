@@ -85,7 +85,7 @@
     // Hiding Animation (default is fade)
     popup.hidingAnimation = MKAPopupViewAnimationFade;
     // Animation Duration (default is 0.3)
-    popup.duration = .3f;
+    popup.duration = 0.4;
     // Delegate
     popup.delegate = self;
 
