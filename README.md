@@ -5,6 +5,8 @@ MKAPopup
 
 <img src="./README/popup1.gif" width="200"/> <img src="./README/popup2.gif" width="200"/>
 
+Objective-C version is [here](https://github.com/HituziANDO/MKAPopup/tree/master/MKAPopupObjC).
+
 ## Requirements
 
 - Swift 4.2+
@@ -113,42 +115,3 @@ popup.hide()
 ### SlideRight
 
 <img src="./README/popup_slideright.gif" width="200"/>
-
-## Objective-C Compatible
-
-MKAPopup is used in Objective-C project?
-Yes!
-
-### Manual Installation
-
-1. Download latest [MKAPopup](https://github.com/HituziANDO/MKAPopup/releases) framework and copy it into your Xcode project
-1. Open the "General" panel
-1. Click on the + button under the "Embedded Binaries" section
-1. After click "Add Other...", choose MKAPopup.framework
-1. Open the "Build Settings" panel
-1. "Alway Embed Swift Standard Libraries" is `YES`
-
-### Usage
-
-Let's see following code.
-
-```objc
-#import <MKAPopup/MKAPopup-Swift.h>
-
-...
-
-// Creates your content view.
-UIView *contentView = ...YOUR CONTENT VIEW CREATION...
-// Creates a popup using your content view.
-SwiftPopup *popup = [[MKAPopup alloc] initWithContentView:contentView];
-
-// Customize the popup to your liking.
-
-// Shows the popup.
-[popup show];
-
-...
-
-// Hides the popup.
-[popup hide];
-```

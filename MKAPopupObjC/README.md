@@ -22,7 +22,15 @@ Let's see following code.
 ```objc
 #import <MKAPopupObjC/MKAPopupObjC.h>
 
+@interface ViewController () <MKAPopupDelegate>
+
+@property (nonatomic) MKAPopup *popup;
+
+@end
+
 ...
+
+@implementation ViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -76,12 +84,14 @@ Let's see following code.
 	
 	// Shows the popup.
 	[popup show];
+	
+	self.popup = popup;
 }
 
 ...
 
 - (void)something {
 	// Hides the popup.
-	[popup hide];
+	[self.popup hide];
 }
 ```
