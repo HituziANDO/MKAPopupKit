@@ -45,7 +45,7 @@ public class MKAPopup: UIView {
     private(set) public var isShowing = false
 
     /// A popup view's size.
-    public var popupSize: CGSize {
+    public var popupSize:   CGSize {
         get {
             return popupView.bounds.size
         }
@@ -55,6 +55,11 @@ public class MKAPopup: UIView {
             let height     = newValue.height < screenSize.height ? newValue.height : screenSize.height
             popupView.bounds.size = CGSize(width: width, height: height)
         }
+    }
+
+    /// Main content view.
+    public var contentView: UIView? {
+        return popupView.containerView.subviews.first
     }
 
     /// Creates an instance with a content view.
