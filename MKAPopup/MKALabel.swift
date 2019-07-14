@@ -26,7 +26,6 @@
 
 import UIKit
 
-@objcMembers
 public class MKALabel: UILabel {
 
     /// A padding of a label.

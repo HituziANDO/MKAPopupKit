@@ -26,7 +26,6 @@
 
 import UIKit
 
-@objc
 public enum MKAPopupViewAnimation: Int {
     case fade
     case slideUp
@@ -36,7 +35,6 @@ public enum MKAPopupViewAnimation: Int {
     case none
 }
 
-@objcMembers
 public class MKAPopupView: UIView {
 
     /// A title view. It is shown when a title is specified.

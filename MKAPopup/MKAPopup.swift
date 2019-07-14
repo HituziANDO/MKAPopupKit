@@ -26,7 +26,6 @@
 
 import UIKit
 
-@objcMembers
 public class MKAPopup: UIView {
 
     /// A popup view.
@@ -143,7 +142,6 @@ public class MKAPopup: UIView {
     ///
     /// - Parameters:
     ///   - animation: An animation to show a popup.
-    @objc(showWithAnimation:)
     public func show(withAnimation animation: MKAPopupViewAnimation) {
         show(withAnimation: animation, duration: duration)
     }
@@ -153,9 +151,10 @@ public class MKAPopup: UIView {
     /// - Parameters:
     ///   - animation: An animation to show a popup.
     ///   - duration: An animation duration.
-    @objc(showWithAnimation:duration:)
     public func show(withAnimation animation: MKAPopupViewAnimation, duration: TimeInterval) {
         if isShowing { return }
+
+        delegate?.popupWillAppear(self)
 
         isShowing = true
 
@@ -182,7 +181,6 @@ public class MKAPopup: UIView {
     ///
     /// - Parameters:
     ///   - animation: An animation to hide a popup.
-    @objc(hideWithAnimation:)
     public func hide(with animation: MKAPopupViewAnimation) {
         hide(with: animation, duration: duration)
     }
@@ -192,9 +190,10 @@ public class MKAPopup: UIView {
     /// - Parameters:
     ///   - animation: An animation to hide a popup.
     ///   - duration: An animation duration.
-    @objc(hideWithAnimation:duration:)
     public func hide(with animation: MKAPopupViewAnimation, duration: TimeInterval) {
         if !isShowing { return }
+
+        delegate?.popupWillDisappear(self)
 
         isShowing = false
 
@@ -212,16 +211,23 @@ public class MKAPopup: UIView {
     }
 }
 
-@objc
 public protocol MKAPopupDelegate: class {
 
+    func popupWillAppear(_ popup: MKAPopup)
     func popupDidAppear(_ popup: MKAPopup)
+    func popupWillDisappear(_ popup: MKAPopup)
     func popupDidDisappear(_ popup: MKAPopup)
 }
 
 extension MKAPopupDelegate {
 
+    public func popupWillAppear(_ popup: MKAPopup) {
+    }
+
     public func popupDidAppear(_ popup: MKAPopup) {
+    }
+
+    public func popupWillDisappear(_ popup: MKAPopup) {
     }
 
     public func popupDidDisappear(_ popup: MKAPopup) {

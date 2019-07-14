@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name         = "MKAPopup"
-  s.version      = "1.1.1"
+  s.version      = "1.2.0"
   s.summary      = "MKAPopup is a view library."
   s.description  = <<-DESC
 MKAPopup is simple and customizable popup view written in Swift for iOS.
                    DESC
   s.homepage     = "https://github.com/HituziANDO/MKAPopup"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.author       = { "Hituzi Ando" => "" }
+  s.author       = "Hituzi Ando"
   s.platform     = :ios, "9.3"
   s.source       = { :git => "https://github.com/HituziANDO/MKAPopup.git", :tag => "#{s.version}" }
   s.source_files  = "MKAPopup/*.{swift}"
