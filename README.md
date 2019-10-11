@@ -9,7 +9,7 @@ Objective-C version is [here](https://github.com/HituziANDO/MKAPopup/tree/master
 
 ## Requirements
 
-- Swift 4.2+
+- Swift 5.0+
 
 ## Installation
 
@@ -21,6 +21,16 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "MKAPopup"
 ```
+
+### Carthage
+
+You can use [Carthage](https://github.com/Carthage/Carthage) to install SebasSwift by adding it to your Cartfile:
+
+```
+github "HituziANDO/MKAPopup"
+```
+
+If you use Carthage to build your dependencies, make sure you have added MKAPopup.framework to the "Linked Frameworks and Libraries" section of your target, and have included them in your Carthage framework copying build phase.
 
 ### Manual Installation
 

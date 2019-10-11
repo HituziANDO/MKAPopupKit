@@ -40,9 +40,11 @@ public class MKAPopup: UIView {
     /// An animation type for hiding a popup.
     public var hidingAnimation           = MKAPopupViewAnimation.fade
     /// An animation duration.
-    public var duration: TimeInterval    = 0.3
+    public var duration:    TimeInterval = 0.3
     /// Returns true if a popup is shown, otherwise false.
-    private(set) public var isShowing = false
+    public var isShowing:   Bool {
+        superview != nil
+    }
 
     /// A popup view's size.
     public var popupSize:   CGSize {
@@ -161,8 +163,6 @@ public class MKAPopup: UIView {
 
         delegate?.popupWillAppear(self)
 
-        isShowing = true
-
         alpha = 0
         popupView.beginShowingAnimation(animation)
 
@@ -199,8 +199,6 @@ public class MKAPopup: UIView {
         if !isShowing { return }
 
         delegate?.popupWillDisappear(self)
-
-        isShowing = false
 
         UIView.animate(withDuration: 0.3) { [weak self] in
             if let weakSelf = self { weakSelf.alpha = 0 }
