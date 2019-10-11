@@ -269,6 +269,10 @@
 
 #pragma mark - property
 
+- (BOOL)isShowing {
+    return self.superview != nil;
+}
+
 - (CGSize)popupSize {
     return self.popupView.bounds.size;
 }
@@ -294,8 +298,6 @@
     if (self.isShowing) {
         return;
     }
-
-    self.isShowing = YES;
 
     self.alpha = 0;
     [self.popupView beginShowingAnimation:animation];
@@ -329,8 +331,6 @@
     if (!self.isShowing) {
         return;
     }
-
-    self.isShowing = NO;
 
     __weak typeof(self) weakSelf = self;
 

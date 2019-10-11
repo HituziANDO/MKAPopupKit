@@ -13,6 +13,8 @@
 		5E95718322572B14009C37CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E95718222572B14009C37CA /* Assets.xcassets */; };
 		5E95718622572B14009C37CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E95718422572B14009C37CA /* LaunchScreen.storyboard */; };
 		5E95718922572B14009C37CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95718822572B14009C37CA /* main.m */; };
+		5EF50957235049DC008AC15F /* MKAPopupObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E95719922578A84009C37CA /* MKAPopupObjC.framework */; };
+		5EF50958235049DC008AC15F /* MKAPopupObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5E95719922578A84009C37CA /* MKAPopupObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,20 @@
 			remoteInfo = MKAPopupObjC;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5EF50959235049DD008AC15F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5EF50958235049DC008AC15F /* MKAPopupObjC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5E95717622572B12009C37CA /* MKAPopupObjCSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKAPopupObjCSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF50957235049DC008AC15F /* MKAPopupObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +80,7 @@
 				5E95719422578A84009C37CA /* MKAPopupObjC.xcodeproj */,
 				5E95717822572B12009C37CA /* MKAPopupObjCSample */,
 				5E95717722572B12009C37CA /* Products */,
+				5EF50956235049DC008AC15F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +116,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5EF50956235049DC008AC15F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -108,6 +133,7 @@
 				5E95717222572B12009C37CA /* Sources */,
 				5E95717322572B12009C37CA /* Frameworks */,
 				5E95717422572B12009C37CA /* Resources */,
+				5EF50959235049DD008AC15F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
