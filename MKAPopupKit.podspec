@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MKAPopupKit"
-  s.version      = "1.3.1"
+  s.version      = "2.0.0"
   s.summary      = "Simple and customizable popup view."
   s.description  = <<-DESC
 MKAPopupKit is simple and customizable popup view for iOS.
