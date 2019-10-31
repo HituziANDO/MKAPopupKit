@@ -1,43 +1,37 @@
-MKAPopup
+MKAPopupKit
 ===
 
-***MKAPopup is simple and customizable popup view written in Swift for iOS.***
+***MKAPopupKit is simple and customizable popup view for iOS.***
 
 <img src="./README/popup1.gif" width="200"/> <img src="./README/popup2.gif" width="200"/>
-
-Objective-C version is [here](https://github.com/HituziANDO/MKAPopup/tree/master/MKAPopupObjC).
-
-## Requirements
-
-- Swift 5.0+
 
 ## Installation
 
 ### CocoaPods
 
-MKAPopup is available through [CocoaPods](http://cocoapods.org). To install
+MKAPopupKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "MKAPopup"
+pod "MKAPopupKit"
 ```
 
 ### Carthage
 
-You can use [Carthage](https://github.com/Carthage/Carthage) to install SebasSwift by adding it to your Cartfile:
+You can use [Carthage](https://github.com/Carthage/Carthage) to install MKAPopupKit by adding it to your Cartfile:
 
 ```
-github "HituziANDO/MKAPopup"
+github "HituziANDO/MKAPopupKit"
 ```
 
-If you use Carthage to build your dependencies, make sure you have added MKAPopup.framework to the "Linked Frameworks and Libraries" section of your target, and have included them in your Carthage framework copying build phase.
+If you use Carthage to build your dependencies, make sure you have added MKAPopupKit.framework to the "Frameworks, Libraries and Embedded Content" section of your target, and have included them in your Carthage framework copying build phase.
 
 ### Manual Installation
 
-1. Download latest [MKAPopup](https://github.com/HituziANDO/MKAPopup/releases) framework and copy it into your Xcode project
+1. Download latest [MKAPopupKit](https://github.com/HituziANDO/MKAPopupKit/releases) framework and copy it into your Xcode project
 1. Open the "General" panel
-1. Click on the + button under the "Embedded Binaries" section
-1. After click "Add Other...", choose MKAPopup.framework
+1. Click on the + button under the "Frameworks, Libraries and Embedded Content" section
+1. After click "Add Other...", choose MKAPopupKit.framework
 
 
 ## Quick Usage
@@ -45,7 +39,7 @@ If you use Carthage to build your dependencies, make sure you have added MKAPopu
 Let's see following code.
 
 ```swift
-import MKAPopup
+import MKAPopupKit
 
 ...
 

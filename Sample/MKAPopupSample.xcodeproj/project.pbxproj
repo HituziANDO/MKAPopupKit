@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E09FA2E236B35DD00A48549 /* MKAPopupKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E09FA2C236B33DE00A48549 /* MKAPopupKit.framework */; };
+		5E09FA2F236B35DD00A48549 /* MKAPopupKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5E09FA2C236B33DE00A48549 /* MKAPopupKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5E77AF882239B79900F01995 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E77AF872239B79900F01995 /* AppDelegate.swift */; };
 		5E77AF8A2239B79900F01995 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E77AF892239B79900F01995 /* ViewController.swift */; };
 		5E77AF8D2239B79900F01995 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E77AF8B2239B79900F01995 /* Main.storyboard */; };
@@ -20,8 +22,6 @@
 		5E7D7389223CF58000EE3292 /* check_mark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E7D7387223CF58000EE3292 /* check_mark@3x.png */; };
 		5E7D738B223CFC9400EE3292 /* ImageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7D738A223CFC9400EE3292 /* ImageContentView.swift */; };
 		5E7D738D223CFCBF00EE3292 /* ImageContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E7D738C223CFCBF00EE3292 /* ImageContentView.xib */; };
-		5E7D73A0223FC68500EE3292 /* MKAPopup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7D739F223FC68500EE3292 /* MKAPopup.framework */; };
-		5E7D73A2223FC68F00EE3292 /* MKAPopup.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5E7D739F223FC68500EE3292 /* MKAPopup.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,7 +31,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5E7D73A2223FC68F00EE3292 /* MKAPopup.framework in Embed Frameworks */,
+				5E09FA2F236B35DD00A48549 /* MKAPopupKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5E09FA2C236B33DE00A48549 /* MKAPopupKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MKAPopupKit.framework; sourceTree = "<group>"; };
 		5E77AF842239B79900F01995 /* MKAPopupSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKAPopupSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E77AF872239B79900F01995 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E77AF892239B79900F01995 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		5E7D7387223CF58000EE3292 /* check_mark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_mark@3x.png"; sourceTree = "<group>"; };
 		5E7D738A223CFC9400EE3292 /* ImageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContentView.swift; sourceTree = "<group>"; };
 		5E7D738C223CFCBF00EE3292 /* ImageContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageContentView.xib; sourceTree = "<group>"; };
-		5E7D739F223FC68500EE3292 /* MKAPopup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MKAPopup.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E7D73A0223FC68500EE3292 /* MKAPopup.framework in Frameworks */,
+				5E09FA2E236B35DD00A48549 /* MKAPopupKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 		5E77AF992239BB8D00F01995 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				5E7D739F223FC68500EE3292 /* MKAPopup.framework */,
+				5E09FA2C236B33DE00A48549 /* MKAPopupKit.framework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";

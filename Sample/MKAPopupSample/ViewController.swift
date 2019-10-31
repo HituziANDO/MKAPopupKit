@@ -8,21 +8,17 @@
 
 import UIKit
 
-import MKAPopup
+import MKAPopupKit
 
 extension UIView {
 
-    static func className() -> String {
-        return String(describing: type(of: self.init()))
-    }
-
-    static func fromNib() -> Self {
-        return instantiate(nibName: className(), bundle: Bundle.main)
+    static func fromNib(name: String) -> Self {
+        return instantiate(nibName: name, bundle: Bundle.main)
     }
 
     private static func instantiate<T: UIView>(nibName: String, bundle: Bundle) -> T {
         guard let view = bundle.loadNibNamed(nibName, owner: nil, options: nil)?.first as? T else {
-            fatalError("\(T.className()) is not found in \(nibName).nib")
+            fatalError("\(nibName).nib is not found.")
         }
 
         return view
@@ -129,7 +125,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     private func createTextContentPopup() -> MKAPopup {
         // Creates your content view.
-        let contentView = TextContentView.fromNib()
+        let contentView = TextContentView.fromNib(name: String(describing: TextContentView.self))
         // Creates a popup using your content view.
         let popup       = MKAPopup(contentView: contentView)
         // Title (default is nil)
@@ -165,7 +161,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     private func createWebContentPopup() -> MKAPopup {
-        let contentView = WebContentView.fromNib()
+        let contentView = WebContentView.fromNib(name: String(describing: WebContentView.self))
         let popup       = MKAPopup(contentView: contentView)
         contentView.webView.load(URLRequest(url: URL(string: "https://github.com/HituziANDO")!))
         popup.popupSize = CGSize(width: 320.0, height: 600.0)
@@ -175,7 +171,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     private func createImageContentPopup() -> MKAPopup {
-        let contentView = ImageContentView.fromNib()
+        let contentView = ImageContentView.fromNib(name: String(describing: ImageContentView.self))
         let popup       = MKAPopup(contentView: contentView)
         popup.delegate = self
 
