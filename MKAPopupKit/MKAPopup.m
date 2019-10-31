@@ -269,6 +269,10 @@
 
 #pragma mark - property
 
+- (nullable UIView *)contentView {
+    return self.popupView.containerView.subviews.firstObject;
+}
+
 - (BOOL)isShowing {
     return self.superview != nil;
 }
@@ -297,6 +301,10 @@
 - (void)showWithAnimation:(MKAPopupViewAnimation)animation duration:(NSTimeInterval)duration {
     if (self.isShowing) {
         return;
+    }
+
+    if ([self.delegate respondsToSelector:@selector(popupWillAppear:)]) {
+        [self.delegate popupWillAppear:self];
     }
 
     self.alpha = 0;
@@ -330,6 +338,10 @@
 - (void)hideWithAnimation:(MKAPopupViewAnimation)animation duration:(NSTimeInterval)duration {
     if (!self.isShowing) {
         return;
+    }
+
+    if ([self.delegate respondsToSelector:@selector(popupWillDisappear:)]) {
+        [self.delegate popupWillDisappear:self];
     }
 
     __weak typeof(self) weakSelf = self;

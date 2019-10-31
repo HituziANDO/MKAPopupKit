@@ -73,6 +73,10 @@ typedef NS_ENUM(NSInteger, MKAPopupViewAnimation) {
  */
 @property (nonatomic, readonly) MKAPopupView *popupView;
 /**
+ * Main content view in the popup view.
+ */
+@property (nonatomic, readonly, nullable) __kindof UIView *contentView;
+/**
  * A delegate.
  */
 @property (nonatomic, weak, nullable) id <MKAPopupDelegate> delegate;
@@ -107,7 +111,7 @@ typedef NS_ENUM(NSInteger, MKAPopupViewAnimation) {
  * @param contentView Main content view.
  * @return An instance.
  */
-- (instancetype)initWithContentView:(UIView *)contentView;
+- (instancetype)initWithContentView:(__kindof UIView *)contentView;
 
 /**
  * Shows a popup using the set animation type and duration.
@@ -149,7 +153,9 @@ typedef NS_ENUM(NSInteger, MKAPopupViewAnimation) {
 @protocol MKAPopupDelegate <NSObject>
 @optional
 
+- (void)popupWillAppear:(MKAPopup *)popup;
 - (void)popupDidAppear:(MKAPopup *)popup;
+- (void)popupWillDisappear:(MKAPopup *)popup;
 - (void)popupDidDisappear:(MKAPopup *)popup;
 
 @end
