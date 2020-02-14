@@ -1,16 +1,20 @@
 # MKAPopupKit
 
-***MKAPopupKit is simple and customizable popup view for iOS.***
+MKAPopupKit is the framework provides simple and customizable popup view for iOS. See following samples.
 
 <img src="./README/popup1.gif" width="200"/> <img src="./README/popup2.gif" width="200"/>
 
 ## Require
 
-iOS 9.3+
+- iOS 9.3+
+- Xcode 11.3+
 
-## Installation
+## Get Started
+### Install Framework to Your iOS App
 
-### CocoaPods
+You have three ways to install this framework.
+
+#### 1. CocoaPods
 
 MKAPopupKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -19,7 +23,7 @@ it, simply add the following line to your Podfile:
 pod "MKAPopupKit"
 ```
 
-### Carthage
+#### 2. Carthage
 
 You can use [Carthage](https://github.com/Carthage/Carthage) to install MKAPopupKit by adding it to your Cartfile:
 
@@ -29,7 +33,7 @@ github "HituziANDO/MKAPopupKit"
 
 If you use Carthage to build your dependencies, make sure you have added MKAPopupKit.framework to the "Frameworks, Libraries and Embedded Content" section of your target, and have included them in your Carthage framework copying build phase.
 
-### Manual Installation
+#### 3. Manual Installation
 
 1. Download latest [MKAPopupKit](https://github.com/HituziANDO/MKAPopupKit/releases) framework and copy it into your Xcode project
 1. Open the "General" panel
@@ -37,71 +41,81 @@ If you use Carthage to build your dependencies, make sure you have added MKAPopu
 1. After click "Add Other...", choose MKAPopupKit.framework
 
 
-## Quick Usage
+### Quick Usage
 
-Let's see following code.
+1. Import the framework
+	
+	```swift
+	import MKAPopupKit
+	```
+	
+1. Create an instance
+	
+	Let's see following code. The MKAPopup can contain a content view has the layout created by you.
+	
+	```swift
+	// Creates your content view.
+	let contentView = ...YOUR CONTENT VIEW CREATION...
+	// Creates a popup using your content view.
+	let popup = MKAPopup(contentView: contentView)
+	
+	// Customizes...
+	
+	// Title (default is nil)
+	popup.popupView.titleLabel.text = "About Swift"
+	
+	// Title Text Color (default is system default color)
+	popup.popupView.titleLabel.textColor = .white
+	
+	// Title Font (default is system default font)
+	popup.popupView.titleLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+	
+	// Title Text Padding (default is (16, 16, 16, 16))
+	popup.popupView.titleLabel.padding = UIEdgeInsets(top: 24.0, left: 16.0, bottom: 24.0, right: 16.0)
+	
+	// Popup Background Color (default is white)
+	popup.popupView.backgroundColor = UIColor(red: 0, green: 0.5, blue: 1.0, alpha: 1.0)
+	
+	// Popup Corner Radius (default is 5)
+	popup.popupView.layer.cornerRadius = 20.0
+	
+	// Popup Size (default is (300, 400))
+	popup.popupSize = CGSize(width: 320.0, height: 480.0)
+	
+	// Overlay Color (default is black with alpha=0.4)
+	popup.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+	
+	// Can hide when a user touches up outside a popup (default is true)
+	popup.canHideWhenTouchUpOutside = false
+	
+	// Showing Animation (default is fade)
+	popup.showingAnimation = .fade
+	
+	// Hiding Animation (default is fade)
+	popup.hidingAnimation = .fade
+	
+	// Animation Duration (default is 0.3)
+	popup.duration = 0.3
+	
+	// Delegate
+	popup.delegate = self
+	```
+	
+1. Show the popup
+	
+	```swift
+	popup.show()
+	```
 
-```swift
-import MKAPopupKit
-
-...
-
-// Creates your content view.
-let contentView = ...YOUR CONTENT VIEW CREATION...
-// Creates a popup using your content view.
-let popup       = MKAPopup(contentView: contentView)
-
-// Customizes...
-
-// Title (default is nil)
-popup.popupView.titleLabel.text = "About Swift"
-
-// Title Text Color (default is system default color)
-popup.popupView.titleLabel.textColor = .white
-
-// Title Font (default is system default font)
-popup.popupView.titleLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-
-// Title Text Padding (default is (16, 16, 16, 16))
-popup.popupView.titleLabel.padding = UIEdgeInsets(top: 24.0, left: 16.0, bottom: 24.0, right: 16.0)
-
-// Popup Background Color (default is white)
-popup.popupView.backgroundColor = UIColor(red: 0, green: 0.5, blue: 1.0, alpha: 1.0)
-
-// Popup Corner Radius (default is 5)
-popup.popupView.layer.cornerRadius = 20.0
-
-// Popup Size (default is (300, 400))
-popup.popupSize = CGSize(width: 320.0, height: 480.0)
-
-// Overlay Color (default is black with alpha=0.4)
-popup.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-
-// Can hide when a user touches up outside a popup (default is true)
-popup.canHideWhenTouchUpOutside = false
-
-// Showing Animation (default is fade)
-popup.showingAnimation = .fade
-
-// Hiding Animation (default is fade)
-popup.hidingAnimation = .fade
-
-// Animation Duration (default is 0.3)
-popup.duration = 0.3
-
-// Delegate
-popup.delegate = self
-
-// Shows the popup.
-popup.show()
-
-...
-
-// Hides the popup.
-popup.hide()
-```
+1. Hide the popup
+	
+	```swift
+	popup.hide()
+	```
 
 ## Animation Types
+
+The MKAPopup has some animations showing and hiding the popup.
 
 ### Fade
 
@@ -123,26 +137,6 @@ popup.hide()
 
 <img src="./README/popup_slideright.gif" width="200"/>
 
-## License
+----
 
-MIT License
-
-Copyright (c) 2019-present Hituzi Ando
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+More info, see my [sample code](https://github.com/HituziANDO/MKAPopupKit/tree/master/Sample).
