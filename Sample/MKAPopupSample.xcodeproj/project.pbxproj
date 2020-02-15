@@ -40,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		5E09FA2C236B33DE00A48549 /* MKAPopupKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MKAPopupKit.framework; sourceTree = "<group>"; };
+		5E5A8A3F23F8344C00FFB537 /* MKAPopupSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MKAPopupSample.entitlements; sourceTree = "<group>"; };
 		5E77AF842239B79900F01995 /* MKAPopupSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKAPopupSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E77AF872239B79900F01995 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E77AF892239B79900F01995 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 		5E77AF862239B79900F01995 /* MKAPopupSample */ = {
 			isa = PBXGroup;
 			children = (
+				5E5A8A3F23F8344C00FFB537 /* MKAPopupSample.entitlements */,
 				5E77AF872239B79900F01995 /* AppDelegate.swift */,
 				5E77AF8E2239B79A00F01995 /* Assets.xcassets */,
 				5E77AF992239BB8D00F01995 /* Framework */,
@@ -358,7 +360,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MKAPopupSample/MKAPopupSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -373,6 +377,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.MKAPopupSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -382,7 +387,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MKAPopupSample/MKAPopupSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -397,6 +404,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.MKAPopupSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

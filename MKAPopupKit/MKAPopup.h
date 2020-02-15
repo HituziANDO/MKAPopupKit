@@ -57,14 +57,6 @@ typedef NS_ENUM(NSInteger, MKAPopupViewAnimation) {
  */
 @property (nonatomic, readonly) UIView *containerView;
 
-- (void)beginShowingAnimation:(MKAPopupViewAnimation)animation;
-- (void)showWithAnimation:(MKAPopupViewAnimation)animation
-                 duration:(NSTimeInterval)duration
-               completion:(nullable void (^)(BOOL finished))completion;
-- (void)hideWithAnimation:(MKAPopupViewAnimation)animation
-                 duration:(NSTimeInterval)duration
-               completion:(nullable void (^)(BOOL finished))completion;
-
 @end
 
 @interface MKAPopup : UIView

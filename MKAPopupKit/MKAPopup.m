@@ -56,6 +56,16 @@
 
 @property (nonatomic) MKAPopupLabel *titleLabel;
 
+- (void)beginShowingAnimation:(MKAPopupViewAnimation)animation
+                     rootView:(UIView *)rootView;
+- (void)showWithAnimation:(MKAPopupViewAnimation)animation
+                 duration:(NSTimeInterval)duration
+               completion:(nullable void (^)(BOOL finished))completion;
+- (void)hideWithAnimation:(MKAPopupViewAnimation)animation
+                 duration:(NSTimeInterval)duration
+               completion:(nullable void (^)(BOOL finished))completion
+                 rootView:(UIView *)rootView;
+
 @end
 
 @implementation MKAPopupView
@@ -96,22 +106,23 @@
 
 }
 
-- (void)beginShowingAnimation:(MKAPopupViewAnimation)animation {
+- (void)beginShowingAnimation:(MKAPopupViewAnimation)animation
+                     rootView:(UIView *)rootView {
     switch (animation) {
         case MKAPopupViewAnimationFade:
             self.alpha = 0;
             break;
         case MKAPopupViewAnimationSlideUp:
-            self.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen.bounds.size.height);
+            self.transform = CGAffineTransformMakeTranslation(0, rootView.bounds.size.height);
             break;
         case MKAPopupViewAnimationSlideDown:
-            self.transform = CGAffineTransformMakeTranslation(0, -UIScreen.mainScreen.bounds.size.height);
+            self.transform = CGAffineTransformMakeTranslation(0, -rootView.bounds.size.height);
             break;
         case MKAPopupViewAnimationSlideLeft:
-            self.transform = CGAffineTransformMakeTranslation(UIScreen.mainScreen.bounds.size.width, 0);
+            self.transform = CGAffineTransformMakeTranslation(rootView.bounds.size.width, 0);
             break;
         case MKAPopupViewAnimationSlideRight:
-            self.transform = CGAffineTransformMakeTranslation(-UIScreen.mainScreen.bounds.size.width, 0);
+            self.transform = CGAffineTransformMakeTranslation(-rootView.bounds.size.width, 0);
             break;
         default:
             break;
@@ -145,7 +156,8 @@
 
 - (void)hideWithAnimation:(MKAPopupViewAnimation)animation
                  duration:(NSTimeInterval)duration
-               completion:(nullable void (^)(BOOL finished))completion {
+               completion:(nullable void (^)(BOOL finished))completion
+                 rootView:(UIView *)rootView {
 
     __weak typeof(self) weakSelf = self;
 
@@ -157,18 +169,18 @@
                                  break;
                              case MKAPopupViewAnimationSlideUp:
                                  weakSelf.transform = CGAffineTransformMakeTranslation(0,
-                                                                                       -UIScreen.mainScreen.bounds.size.height);
+                                                                                       -rootView.bounds.size.height);
                                  break;
                              case MKAPopupViewAnimationSlideDown:
                                  weakSelf.transform = CGAffineTransformMakeTranslation(0,
-                                                                                       UIScreen.mainScreen.bounds.size.height);
+                                                                                       rootView.bounds.size.height);
                                  break;
                              case MKAPopupViewAnimationSlideLeft:
-                                 weakSelf.transform = CGAffineTransformMakeTranslation(-UIScreen.mainScreen.bounds.size.width,
+                                 weakSelf.transform = CGAffineTransformMakeTranslation(-rootView.bounds.size.width,
                                                                                        0);
                                  break;
                              case MKAPopupViewAnimationSlideRight:
-                                 weakSelf.transform = CGAffineTransformMakeTranslation(UIScreen.mainScreen.bounds.size.width,
+                                 weakSelf.transform = CGAffineTransformMakeTranslation(rootView.bounds.size.width,
                                                                                        0);
                                  break;
                              default:
@@ -189,16 +201,16 @@
 @implementation MKAPopup
 
 - (instancetype)initWithContentView:(UIView *)contentView {
-    self = [super initWithFrame:UIScreen.mainScreen.bounds];
+    CGRect screenRect = UIApplication.sharedApplication.keyWindow.subviews.lastObject.bounds;
 
-    if (self) {
+    if (self = [super initWithFrame:screenRect]) {
         _canHideWhenTouchUpOutside = YES;
         _showingAnimation = MKAPopupViewAnimationFade;
         _hidingAnimation = MKAPopupViewAnimationFade;
         _duration = 0.3;
 
         _popupView = [MKAPopupView new];
-        _popupView.frame = CGRectMake(0, 0, 300.f, 400.f);
+        _popupView.frame = CGRectMake(0, 0, 320.f, 480.f);
         [self addSubview:_popupView];
 
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.4f];
@@ -282,7 +294,7 @@
 }
 
 - (void)setPopupSize:(CGSize)popupSize {
-    CGSize screenSize = UIScreen.mainScreen.bounds.size;
+    CGSize screenSize = self.bounds.size;
     CGFloat width = popupSize.width < screenSize.width ? popupSize.width : screenSize.width;
     CGFloat height = popupSize.height < screenSize.height ? popupSize.height : screenSize.height;
     self.popupView.bounds = (CGRect) { { 0, 0 }, { width, height } };
@@ -308,7 +320,7 @@
     }
 
     self.alpha = 0;
-    [self.popupView beginShowingAnimation:animation];
+    [self.popupView beginShowingAnimation:animation rootView:self];
 
     [[UIApplication sharedApplication].keyWindow.subviews.lastObject addSubview:self];
 
@@ -358,7 +370,8 @@
                                if ([weakSelf.delegate respondsToSelector:@selector(popupDidDisappear:)]) {
                                    [weakSelf.delegate popupDidDisappear:weakSelf];
                                }
-                           }];
+                           }
+                             rootView:self];
 }
 
 @end
