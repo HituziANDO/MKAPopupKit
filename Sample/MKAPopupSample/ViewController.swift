@@ -1,9 +1,27 @@
 //
-//  ViewController.swift
-//  MKAPopupSample
+// MKAPopupKit
 //
-//  Created by Masaki Ando on 2019/03/14.
-//  Copyright © 2019年 Hituzi Ando. All rights reserved.
+// Copyright (c) 2020-present Hituzi Ando. All rights reserved.
+//
+// MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 //
 
 import UIKit
@@ -25,23 +43,33 @@ extension UIView {
     }
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKAPopupDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    private let        popupList = ["Text Content View Popup",
-                                    "Web Content View Popup",
-                                    "Image Content View Popup",
-                                    "Fade Animation Sample",
-                                    "Slide Up Animation Sample",
-                                    "Slide Down Animation Sample",
-                                    "Slide Left Animation Sample",
-                                    "Slide Right Animation Sample"]
+    private let popupList = ["Text Content View Popup",
+                             "Web Content View Popup",
+                             "Image Content View Popup",
+                             "Fade Animation Sample",
+                             "Slide Up Animation Sample",
+                             "Slide Down Animation Sample",
+                             "Slide Left Animation Sample",
+                             "Slide Right Animation Sample",
+                             "Toast Sample1",
+                             "Toast Sample2",
+                             "Toast Sample3"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.dataSource = self
         tableView.delegate = self
+
+        // Create the cache of the style.
+        let config = MKAToastStyleConfiguration()
+        config.height = 64.0
+        config.backgroundColor = UIColor.blue.withAlphaComponent(0.7)
+        config.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+        MKAToast.add(styleConfiguration: config, forKey: "Success")
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,12 +134,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 popup.duration = 0.4
                 popup.tag = 7
                 popup.show()
+            case 8:
+                // Most simple usage of MKAToast.
+                MKAToast("Display short message!").show()
+            case 9:
+                // Customize the toast view and show it.
+                let config = MKAToastStyleConfiguration()
+                config.width = 320.0
+                config.height = 56.0
+                config.backgroundColor = UIColor.red.withAlphaComponent(0.9)
+                config.textColor = .black
+                config.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
+                MKAToast("Something error occurred!", style: config)
+                    .withDelegate(self)
+                    .withTag(1)
+                    .withTime(MKAToastLongTime)
+                    .withAnimationDuration(0.5)
+                    .withDelay(0.5)
+                    .show()
+            case 10:
+                // Show the toast view using cached style.
+                MKAToast("Success!", forKey: "Success")
+                    .withDelegate(self)
+                    .withTag(2)
+                    .show()
             default:
                 break
         }
     }
+}
 
-    // MARK: MKAPopupDelegate
+// MARK: MKAPopupDelegate
+extension ViewController: MKAPopupDelegate {
 
     func popupDidAppear(_ popup: MKAPopup) {
         print("Popup(tag:\(popup.tag)) did appear!")
@@ -120,14 +174,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func popupDidDisappear(_ popup: MKAPopup) {
         print("Popup(tag:\(popup.tag)) did disappear!")
     }
+}
 
-    // MARK: private method
+// MARK: MKAToastDelegate
+extension ViewController: MKAToastDelegate {
 
-    private func createTextContentPopup() -> MKAPopup {
+    func toastWillAppear(_ toast: MKAToast) {
+        print("Toast(tag:\(toast.tag) will appear!")
+    }
+
+    func toastDidAppear(_ toast: MKAToast) {
+        print("Toast(tag:\(toast.tag) did appear!")
+    }
+
+    func toastWillDisappear(_ toast: MKAToast) {
+        print("Toast(tag:\(toast.tag) will disappear!")
+    }
+
+    func toastDidDisappear(_ toast: MKAToast) {
+        print("Toast(tag:\(toast.tag) did disappear!")
+    }
+}
+
+// MARK: private method
+private extension ViewController {
+
+    func createTextContentPopup() -> MKAPopup {
         // Creates your content view.
         let contentView = TextContentView.fromNib(name: String(describing: TextContentView.self))
         // Creates a popup using your content view.
-        let popup       = MKAPopup(contentView: contentView)
+        let popup = MKAPopup(contentView: contentView)
         // Title (default is nil)
         popup.popupView.titleLabel.text = "About Swift"
         // Title Text Color (default is system default color)
@@ -160,9 +236,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return popup
     }
 
-    private func createWebContentPopup() -> MKAPopup {
+    func createWebContentPopup() -> MKAPopup {
         let contentView = WebContentView.fromNib(name: String(describing: WebContentView.self))
-        let popup       = MKAPopup(contentView: contentView)
+        let popup = MKAPopup(contentView: contentView)
         contentView.webView.load(URLRequest(url: URL(string: "https://github.com/HituziANDO")!))
         popup.popupSize = CGSize(width: 320.0, height: 600.0)
         popup.delegate = self
@@ -170,9 +246,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return popup
     }
 
-    private func createImageContentPopup() -> MKAPopup {
+    func createImageContentPopup() -> MKAPopup {
         let contentView = ImageContentView.fromNib(name: String(describing: ImageContentView.self))
-        let popup       = MKAPopup(contentView: contentView)
+        let popup = MKAPopup(contentView: contentView)
         popup.delegate = self
 
         contentView.click = { popup.hide() }

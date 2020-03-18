@@ -1,7 +1,7 @@
 //
-// MKAPopup
+// MKAPopupKit
 //
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
+// Copyright (c) 2020-present Hituzi Ando. All rights reserved.
 //
 // MIT License
 //
@@ -29,7 +29,7 @@ import UIKit
 class ImageContentView: UIView {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var button:    UIButton!
+    @IBOutlet weak var button: UIButton!
     var click: (() -> Void)?
 
     override init(frame: CGRect) {

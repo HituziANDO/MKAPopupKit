@@ -1,7 +1,7 @@
 //
-// MKAPopup
+// MKAPopupKit
 //
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
+// Copyright (c) 2020-present Hituzi Ando. All rights reserved.
 //
 // MIT License
 //
@@ -24,13 +24,12 @@
 // SOFTWARE.
 //
 
-
 import UIKit
 
 class TextContentView: UIView {
 
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var button:   UIButton!
+    @IBOutlet weak var button: UIButton!
     var click: (() -> Void)?
 
     override init(frame: CGRect) {

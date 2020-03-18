@@ -137,6 +137,43 @@ The MKAPopup has some animations showing and hiding the popup.
 
 <img src="./README/popup_slideright.gif" width="200"/>
 
+## Toast
+
+The toast is the view that disappears automatically after displaying a short message for a few seconds. It is inspired by Android's Toast.
+
+<img src="./README/toast1.gif" width="200"/>
+
+### Most Simple Usage
+
+It's very simple! See below.
+
+```swift
+MKAToast("Display short message!").show()
+```
+
+### Customize Toast
+
+Customize the toast view and show it.
+
+```swift
+// Make the style.
+let config = MKAToastStyleConfiguration()
+config.width = 320.0
+config.height = 56.0
+config.backgroundColor = UIColor.red.withAlphaComponent(0.9)
+config.textColor = .black
+config.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
+
+// Create the toast with options.
+MKAToast("Something error occurred!", style: config)
+    .withDelegate(self)
+    .withTag(1)
+    .withTime(MKAToastLongTime)
+    .withAnimationDuration(0.5)
+    .withDelay(0.5)
+    .show()
+```
+
 ----
 
 More info, see my [sample code](https://github.com/HituziANDO/MKAPopupKit/tree/master/Sample).
