@@ -46,6 +46,7 @@ extension UIView {
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    private var toastForever: MKAToast?
     private let popupList = ["Text Content View Popup",
                              "Web Content View Popup",
                              "Image Content View Popup",
@@ -148,16 +149,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 MKAToast("Something error occurred!", style: config)
                     .withDelegate(self)
                     .withTag(1)
-                    .withTime(MKAToastLongTime)
+                    .withTime(MKAToastTimeLong)
                     .withAnimationDuration(0.5)
                     .withDelay(0.5)
                     .show()
             case 10:
-                // Show the toast view using cached style.
-                MKAToast("Success!", forKey: "Success")
+                if let isShowing = toastForever?.isShowing, isShowing {
+                    toastForever?.hide()
+                    return
+                }
+                // Create the toast view using cached style.
+                toastForever = MKAToast("Success!", forKey: "Success")
                     .withDelegate(self)
                     .withTag(2)
-                    .show()
+                    .withTime(MKAToastTimeForever)
+                // Show the toast view forever (until `hide()` method is called).
+                toastForever?.show()
             default:
                 break
         }

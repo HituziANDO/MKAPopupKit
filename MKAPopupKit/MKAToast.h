@@ -79,11 +79,23 @@ UIKIT_EXTERN const CGFloat MKAToastDefaultHeight;
 /**
  * A default short display time for a toast view.
  */
-UIKIT_EXTERN const NSTimeInterval MKAToastShortTime;
+UIKIT_EXTERN const NSTimeInterval MKAToastShortTime DEPRECATED_MSG_ATTRIBUTE("Use `MKAToastTimeShort` instead.");
 /**
  * A default long display time for a toast view.
  */
-UIKIT_EXTERN const NSTimeInterval MKAToastLongTime;
+UIKIT_EXTERN const NSTimeInterval MKAToastLongTime DEPRECATED_MSG_ATTRIBUTE("Use `MKAToastTimeLong` instead.");
+/**
+ * A default short display time for a toast view.
+ */
+UIKIT_EXTERN const NSTimeInterval MKAToastTimeShort;
+/**
+ * A default long display time for a toast view.
+ */
+UIKIT_EXTERN const NSTimeInterval MKAToastTimeLong;
+/**
+ * A toast view is displayed forever (until `hide` method is called).
+ */
+UIKIT_EXTERN const NSTimeInterval MKAToastTimeForever;
 
 /**
  * MKAToast is the view that disappears automatically after displaying a short message for a few seconds.
@@ -94,6 +106,10 @@ UIKIT_EXTERN const NSTimeInterval MKAToastLongTime;
  * A label.
  */
 @property (nonatomic, readonly) UILabel *label;
+/**
+ * Tells whether the toast view is showing.
+ */
+@property (nonatomic, readonly) BOOL isShowing;
 
 /**
  * Creates a toast view with default style.
@@ -132,6 +148,9 @@ UIKIT_EXTERN const NSTimeInterval MKAToastLongTime;
  * Shows the toast view with the animation in configured time. After fading out, it is separated from the parent view.
  */
 - (void)show;
+/**
+ */
+- (void)hide;
 
 /**
  * Shows a toast view with the animation in default time. After fading out, it is separated from the parent view.

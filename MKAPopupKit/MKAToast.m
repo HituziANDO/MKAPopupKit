@@ -57,6 +57,9 @@ const CGFloat MKAToastDefaultHeight = 80.f;
 
 const NSTimeInterval MKAToastShortTime = 3.0;
 const NSTimeInterval MKAToastLongTime = 5.0;
+const NSTimeInterval MKAToastTimeShort = 3.0;
+const NSTimeInterval MKAToastTimeLong = 5.0;
+const NSTimeInterval MKAToastTimeForever = -1.0;
 
 @interface MKAToast ()
 
@@ -107,7 +110,7 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
     if (self = [super initWithFrame:frame]) {
         // Sets default values.
         _animationDuration = kDefaultAnimationDuration;
-        _time = MKAToastShortTime;
+        _time = MKAToastTimeShort;
         _delay = 0;
         self.backgroundColor = styleConfig.backgroundColor;
 
@@ -132,12 +135,18 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
 
         // Hides characters that protrude.
         self.clipsToBounds = YES;
+
+        self.alpha = 0;
     }
 
     return self;
 }
 
 #pragma mark - public method
+
+- (BOOL)isShowing {
+    return self.alpha == 1.f;
+}
 
 - (instancetype)withTag:(NSInteger)tag {
     self.tag = tag;
@@ -182,16 +191,24 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
                          self.alpha = 1.f;
                      }
                      completion:^(BOOL b) {
-                         [NSTimer scheduledTimerWithTimeInterval:self.time
-                                                          target:self
-                                                        selector:@selector(hide:)
-                                                        userInfo:nil
-                                                         repeats:NO];
+                         if (self.time != MKAToastTimeForever) {
+                             [NSTimer scheduledTimerWithTimeInterval:self.time
+                                                              target:self
+                                                            selector:@selector(hide:)
+                                                            userInfo:nil
+                                                             repeats:NO];
+                         }
 
                          if ([self.delegate respondsToSelector:@selector(toastDidAppear:)]) {
                              [self.delegate toastDidAppear:self];
                          }
                      }];
+}
+
+- (void)hide {
+    if (self.time == MKAToastTimeForever) {
+        [self hide:nil];
+    }
 }
 
 + (void)showText:(NSString *)text {
