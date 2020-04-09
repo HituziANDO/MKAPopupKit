@@ -149,13 +149,21 @@ UIKIT_EXTERN const NSTimeInterval MKAToastTimeForever;
  */
 - (void)show;
 /**
+ * Shows the toast view with the animation in configured time at specified point. After fading out, it is separated from the parent view.
+ */
+- (void)showAtLocation:(CGPoint)center NS_SWIFT_NAME(show(at:));
+/**
  */
 - (void)hide;
 
 /**
  * Shows a toast view with the animation in default time. After fading out, it is separated from the parent view.
  */
-+ (void)showText:(NSString *)text NS_SWIFT_UNAVAILABLE("In Swift, use `MKAToast(_:)show()` instead.");
++ (void)showText:(NSString *)text NS_SWIFT_UNAVAILABLE("In Swift, use `MKAToast(_:).show()` instead.");
+/**
+ * Shows a toast view with the animation in default time at specified point. After fading out, it is separated from the parent view.
+ */
++ (void)showText:(NSString *)text atLocation:(CGPoint)center NS_SWIFT_UNAVAILABLE("In Swift, use `MKAToast(_:).show(at:)` instead.");
 /**
  * Sets a default style configuration.
  */
@@ -189,6 +197,10 @@ UIKIT_EXTERN const NSTimeInterval MKAToastTimeForever;
  * Called immediately after a toast view disappears.
  */
 - (void)toastDidDisappear:(MKAToast *)toast;
+/**
+ * Called when the toast view is clicked.
+ */
+- (void)toastClicked:(MKAToast *)toast;
 
 @end
 
