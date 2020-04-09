@@ -197,6 +197,10 @@ UIKIT_EXTERN const NSTimeInterval MKAToastTimeForever;
  * Called immediately after a toast view disappears.
  */
 - (void)toastDidDisappear:(MKAToast *)toast;
+/**
+ * Called when the toast view is clicked.
+ */
+- (void)toastClicked:(MKAToast *)toast;
 
 @end
 

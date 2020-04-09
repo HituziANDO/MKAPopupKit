@@ -201,6 +201,10 @@ extension ViewController: MKAToastDelegate {
     func toastDidDisappear(_ toast: MKAToast) {
         print("Toast(tag:\(toast.tag) did disappear!")
     }
+
+    func toastClicked(_ toast: MKAToast) {
+        print("Toast(tag:\(toast.tag) is clicked!")
+    }
 }
 
 // MARK: private method

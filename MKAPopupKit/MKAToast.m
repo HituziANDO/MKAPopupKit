@@ -80,6 +80,7 @@ const NSTimeInterval MKAToastTimeForever = -1.0;
  * A delay in seconds that the toast view is shown after it.
  */
 @property (nonatomic) NSTimeInterval delay;
+@property (nonatomic) BOOL isTouched;
 
 @end
 
@@ -140,6 +141,24 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
     }
 
     return self;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.isTouched = YES;
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (self.isTouched && [event touchesForView:self].count > 0) {
+        if ([self.delegate respondsToSelector:@selector(toastClicked:)]) {
+            [self.delegate toastClicked:self];
+        }
+    }
+
+    self.isTouched = NO;
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.isTouched = NO;
 }
 
 #pragma mark - public method
