@@ -174,14 +174,19 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
 }
 
 - (void)show {
+    // Places horizontal center adding margin bottom.
+    UIView *view = [self rootView];
+    [self showAtLocation:CGPointMake(view.center.x, view.frame.size.height - 56.f - self.frame.size.height / 2.f)];
+}
+
+- (void)showAtLocation:(CGPoint)center {
     if ([self.delegate respondsToSelector:@selector(toastWillAppear:)]) {
         [self.delegate toastWillAppear:self];
     }
 
     UIView *view = [self rootView];
     [view addSubview:self];
-    // Places horizontal center adding margin bottom.
-    self.center = CGPointMake(view.center.x, view.frame.size.height - 56.f - self.frame.size.height / 2.f);
+    self.center = center;
 
     self.alpha = 0;
     [UIView animateWithDuration:self.animationDuration
@@ -213,6 +218,10 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
 
 + (void)showText:(NSString *)text {
     [[MKAToast toastWithText:text] show];
+}
+
++ (void)showText:(NSString *)text atLocation:(CGPoint)center {
+    [[MKAToast toastWithText:text] showAtLocation:center];
 }
 
 + (void)setDefaultStyleConfiguration:(MKAToastStyleConfiguration *)config {

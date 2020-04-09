@@ -152,7 +152,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     .withTime(MKAToastTimeLong)
                     .withAnimationDuration(0.5)
                     .withDelay(0.5)
-                    .show()
+                    .show(at: view.center)
             case 10:
                 if let isShowing = toastForever?.isShowing, isShowing {
                     toastForever?.hide()
