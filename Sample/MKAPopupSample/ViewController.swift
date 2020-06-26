@@ -57,7 +57,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                              "Slide Right Animation Sample",
                              "Toast Sample1",
                              "Toast Sample2",
-                             "Toast Sample3"]
+                             "Toast Sample3",
+                             "Indicator(Basic)",
+                             "Indicator(Custom)",
+                             "Indicator(Sprite)",
+                             "Hide Indicator"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +75,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         config.backgroundColor = UIColor.blue.withAlphaComponent(0.7)
         config.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
         MKAToast.add(styleConfiguration: config, forKey: "Success")
+
+        // Set default indicator view.
+        MKAIndicator.setDefault(MKAIndicator(activityIndicatorViewStyle: .medium))
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -165,8 +172,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     .withTime(MKAToastTimeForever)
                 // Show the toast view forever (until `hide()` method is called).
                 toastForever?.show()
+            case 11:
+                // Show the basic indicator.
+                let indicator = MKAIndicator(activityIndicatorViewStyle: .medium)
+                MKAIndicator.setDefault(indicator)
+                MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+            case 12:
+                // Show the custom indicator with the image.
+                let indicator = MKAIndicator(image: UIImage(named: "spinner")!)
+                    .setAnimationDuration(2.0)
+                MKAIndicator.setDefault(indicator)
+                MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+            case 13:
+                // Show the sprite animation indicator.
+                let indicator = MKAIndicator(imagesFormat: "indicator%d", count: 8)
+                    .setAnimationDuration(0.5)
+                MKAIndicator.setDefault(indicator)
+                MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
             default:
-                break
+                MKAIndicator.default().hide()
         }
     }
 }

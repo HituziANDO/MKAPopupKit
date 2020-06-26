@@ -1,9 +1,7 @@
 //
-// MKAPopupKit
-//
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
-//
 // MIT License
+//
+// Copyright (c) 2020-present Hituzi Ando
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,14 +24,18 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for MKAPopupKit.
-FOUNDATION_EXPORT double MKAPopupKitVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for MKAPopupKit.
-FOUNDATION_EXPORT const unsigned char MKAPopupKitVersionString[];
+UIKIT_EXTERN NSString *const MKAIndicatorRotationAnimationKey;
+UIKIT_EXTERN const double MKAIndicatorDefaultAnimationDuration;
+UIKIT_EXTERN const float MKAIndicatorDefaultRepeatCount;
 
-// In this header, you should import all the public headers of your framework using statements like #import <MKAPopupKit/PublicHeader.h>
+@protocol MKAIndicatorInterface <NSObject>
 
-#import "MKAIndicator.h"
-#import "MKAPopup.h"
-#import "MKAToast.h"
+- (UIView *)view;
+- (void)startAnimating;
+- (void)stopAnimating;
+
+@end
+
+NS_ASSUME_NONNULL_END

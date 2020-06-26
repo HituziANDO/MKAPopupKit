@@ -1,9 +1,7 @@
 //
-// MKAPopupKit
-//
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
-//
 // MIT License
+//
+// Copyright (c) 2020-present Hituzi Ando
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,14 +24,17 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for MKAPopupKit.
-FOUNDATION_EXPORT double MKAPopupKitVersionNumber;
+#import "MKAIndicatorInterface.h"
 
-//! Project version string for MKAPopupKit.
-FOUNDATION_EXPORT const unsigned char MKAPopupKitVersionString[];
+NS_ASSUME_NONNULL_BEGIN
 
-// In this header, you should import all the public headers of your framework using statements like #import <MKAPopupKit/PublicHeader.h>
+@interface MKACustomIndicatorViewWrapper : NSObject <MKAIndicatorInterface>
 
-#import "MKAIndicator.h"
-#import "MKAPopup.h"
-#import "MKAToast.h"
+@property (nonatomic) double duration;
+@property (nonatomic) float repeatCount;
+
+- (void)setImage:(UIImage *)image;
+
+@end
+
+NS_ASSUME_NONNULL_END

@@ -26,6 +26,16 @@
 		5E95719F22578B38009C37CA /* MKAPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95719D22578B38009C37CA /* MKAPopup.m */; };
 		5ED705DE24218064003EBC0A /* MKAToast.h in Headers */ = {isa = PBXBuildFile; fileRef = 5ED705DC24218064003EBC0A /* MKAToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5ED705E324218070003EBC0A /* MKAToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ED705E124218070003EBC0A /* MKAToast.m */; };
+		5EE9566124A5F866004E903F /* MKAIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EE9565F24A5F866004E903F /* MKAIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EE9566224A5F866004E903F /* MKAIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9566024A5F866004E903F /* MKAIndicator.m */; };
+		5EE9566F24A5F874004E903F /* MKAActivityIndicatorViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9566524A5F874004E903F /* MKAActivityIndicatorViewWrapper.m */; };
+		5EE9567024A5F874004E903F /* MKAIndicatorInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EE9566624A5F874004E903F /* MKAIndicatorInterface.h */; };
+		5EE9567124A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9566724A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.m */; };
+		5EE9567224A5F874004E903F /* MKACustomIndicatorViewWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EE9566824A5F874004E903F /* MKACustomIndicatorViewWrapper.h */; };
+		5EE9567424A5F874004E903F /* MKAActivityIndicatorViewWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EE9566A24A5F874004E903F /* MKAActivityIndicatorViewWrapper.h */; };
+		5EE9567524A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EE9566B24A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.h */; };
+		5EE9567624A5F874004E903F /* MKAIndicatorInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9566C24A5F874004E903F /* MKAIndicatorInterface.m */; };
+		5EE9567724A5F874004E903F /* MKACustomIndicatorViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9566D24A5F874004E903F /* MKACustomIndicatorViewWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +46,16 @@
 		5E95719D22578B38009C37CA /* MKAPopup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKAPopup.m; sourceTree = "<group>"; };
 		5ED705DC24218064003EBC0A /* MKAToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAToast.h; sourceTree = "<group>"; };
 		5ED705E124218070003EBC0A /* MKAToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAToast.m; sourceTree = "<group>"; };
+		5EE9565F24A5F866004E903F /* MKAIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAIndicator.h; sourceTree = "<group>"; };
+		5EE9566024A5F866004E903F /* MKAIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAIndicator.m; sourceTree = "<group>"; };
+		5EE9566524A5F874004E903F /* MKAActivityIndicatorViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAActivityIndicatorViewWrapper.m; sourceTree = "<group>"; };
+		5EE9566624A5F874004E903F /* MKAIndicatorInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAIndicatorInterface.h; sourceTree = "<group>"; };
+		5EE9566724A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKASpriteAnimationIndicatorViewWrapper.m; sourceTree = "<group>"; };
+		5EE9566824A5F874004E903F /* MKACustomIndicatorViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKACustomIndicatorViewWrapper.h; sourceTree = "<group>"; };
+		5EE9566A24A5F874004E903F /* MKAActivityIndicatorViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAActivityIndicatorViewWrapper.h; sourceTree = "<group>"; };
+		5EE9566B24A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKASpriteAnimationIndicatorViewWrapper.h; sourceTree = "<group>"; };
+		5EE9566C24A5F874004E903F /* MKAIndicatorInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAIndicatorInterface.m; sourceTree = "<group>"; };
+		5EE9566D24A5F874004E903F /* MKACustomIndicatorViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKACustomIndicatorViewWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				5E95716622572AC4009C37CA /* Info.plist */,
+				5EE9566324A5F874004E903F /* Internal */,
+				5EE9565F24A5F866004E903F /* MKAIndicator.h */,
+				5EE9566024A5F866004E903F /* MKAIndicator.m */,
 				5E95719C22578B38009C37CA /* MKAPopup.h */,
 				5E95719D22578B38009C37CA /* MKAPopup.m */,
 				5E95716522572AC4009C37CA /* MKAPopupKit.h */,
@@ -76,6 +99,21 @@
 				5ED705E124218070003EBC0A /* MKAToast.m */,
 			);
 			path = MKAPopupKit;
+			sourceTree = "<group>";
+		};
+		5EE9566324A5F874004E903F /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				5EE9566A24A5F874004E903F /* MKAActivityIndicatorViewWrapper.h */,
+				5EE9566524A5F874004E903F /* MKAActivityIndicatorViewWrapper.m */,
+				5EE9566824A5F874004E903F /* MKACustomIndicatorViewWrapper.h */,
+				5EE9566D24A5F874004E903F /* MKACustomIndicatorViewWrapper.m */,
+				5EE9566624A5F874004E903F /* MKAIndicatorInterface.h */,
+				5EE9566C24A5F874004E903F /* MKAIndicatorInterface.m */,
+				5EE9566B24A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.h */,
+				5EE9566724A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.m */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,7 +125,12 @@
 			files = (
 				5E95716722572AC4009C37CA /* MKAPopupKit.h in Headers */,
 				5E95719E22578B38009C37CA /* MKAPopup.h in Headers */,
+				5EE9567424A5F874004E903F /* MKAActivityIndicatorViewWrapper.h in Headers */,
+				5EE9566124A5F866004E903F /* MKAIndicator.h in Headers */,
+				5EE9567524A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.h in Headers */,
+				5EE9567224A5F874004E903F /* MKACustomIndicatorViewWrapper.h in Headers */,
 				5ED705DE24218064003EBC0A /* MKAToast.h in Headers */,
+				5EE9567024A5F874004E903F /* MKAIndicatorInterface.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +226,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ED705E324218070003EBC0A /* MKAToast.m in Sources */,
+				5EE9567624A5F874004E903F /* MKAIndicatorInterface.m in Sources */,
 				5E95719F22578B38009C37CA /* MKAPopup.m in Sources */,
+				5EE9567124A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.m in Sources */,
+				5EE9566224A5F866004E903F /* MKAIndicator.m in Sources */,
+				5EE9566F24A5F874004E903F /* MKAActivityIndicatorViewWrapper.m in Sources */,
+				5EE9567724A5F874004E903F /* MKACustomIndicatorViewWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +390,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.MKAPopupKit;
 				PRODUCT_NAME = MKAPopupKit;
 				SKIP_INSTALL = YES;
@@ -366,7 +414,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.MKAPopupKit;
 				PRODUCT_NAME = MKAPopupKit;
 				SKIP_INSTALL = YES;

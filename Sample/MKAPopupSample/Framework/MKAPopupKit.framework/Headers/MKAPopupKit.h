@@ -34,5 +34,6 @@ FOUNDATION_EXPORT const unsigned char MKAPopupKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <MKAPopupKit/PublicHeader.h>
 
+#import "MKAIndicator.h"
 #import "MKAPopup.h"
 #import "MKAToast.h"

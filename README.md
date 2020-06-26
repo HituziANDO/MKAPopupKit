@@ -174,6 +174,74 @@ MKAToast("Something error occurred!", style: config)
     .show()
 ```
 
+## Indicator
+
+MKAIndicator makes you to create the powerful indicator view easily. See following samples.
+
+**Basic Type Indicator**
+
+<img src="./README/indicator_basic.gif" width="200" style="box-shadow: 0 1px 20px #00000022">
+
+**Custom Type Indicator**
+
+<img src="./README/indicator_custom.gif" width="200" style="box-shadow: 0 1px 20px #00000022">
+
+**Sprite Animation Type Indicator**
+
+<img src="./README/indicator_sprite.gif" width="200" style="box-shadow: 0 1px 20px #00000022">
+
+### Most Simple Usage
+
+1. Show the indicator
+	
+	```swift
+	// Set default indicator.
+   MKAIndicator.setDefault(MKAIndicator(activityIndicatorViewStyle: .medium))
+	MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+	```
+
+1. Hide the indicator
+	
+	```swift
+	MKAIndicator.default().hide()
+	```
+
+#### Style
+#### Basic Type Indicator
+
+The basic type indicator is simple using the style prepared by UIKit.
+
+```swift
+// Show the basic indicator.
+let indicator = MKAIndicator(activityIndicatorViewStyle: .medium)
+MKAIndicator.setDefault(indicator)
+MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+```
+
+#### Custom Type Indicator
+
+The custom type indicator uses an indicator image you created or prepared. The indicator image automatically rotates at the specified animation interval.
+
+```swift
+// Show the custom indicator with the image.
+let indicator = MKAIndicator(image: UIImage(named: "spinner")!)
+    .setAnimationDuration(2.0)
+MKAIndicator.setDefault(indicator)
+MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+```
+
+#### Sprite Animation Type Indicator
+
+The sprite animation type indicator uses indicator images you created or prepared. Images are composed of the keyframe animation at the specified animation interval.
+
+```swift
+// Show the sprite animation indicator.
+let indicator = MKAIndicator(imagesFormat: "indicator%d", count: 8)
+    .setAnimationDuration(0.5)
+MKAIndicator.setDefault(indicator)
+MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+```
+
 ----
 
 More info, see my [sample code](https://github.com/HituziANDO/MKAPopupKit/tree/master/Sample).
