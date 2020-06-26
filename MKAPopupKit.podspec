@@ -10,7 +10,7 @@ MKAPopupKit is simple and customizable popup view for iOS.
   s.author       = "Hituzi Ando"
   s.platform     = :ios, "9.3"
   s.source       = { :git => "https://github.com/HituziANDO/MKAPopupKit.git", :tag => "#{s.version}" }
-  s.source_files = "MKAPopupKit/*.{h,m}"
+  s.source_files = "MKAPopupKit/**/*.{h,m}"
   #s.exclude_files = ""
   # s.public_header_files = "Classes/**/*.h"
   # s.resource  = "icon.png"
