@@ -192,11 +192,22 @@ MKAIndicator makes you to create the powerful indicator view easily. See followi
 
 ### Most Simple Usage
 
-1. Show the indicator
+1. Set the indicator for default
 	
 	```swift
-	// Set default indicator.
-   MKAIndicator.setDefault(MKAIndicator(activityIndicatorViewStyle: .medium))
+	// ViewController
+	
+	override func viewDidLoad() {
+	    super.viewDidLoad()
+
+	    // Set default indicator.
+	    MKAIndicator.setDefault(MKAIndicator(activityIndicatorViewStyle: .medium))
+	}
+	```
+
+1. Show the indicator
+		
+	```swift
 	MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
 	```
 
@@ -206,7 +217,7 @@ MKAIndicator makes you to create the powerful indicator view easily. See followi
 	MKAIndicator.default().hide()
 	```
 
-#### Style
+### Style
 #### Basic Type Indicator
 
 The basic type indicator is simple using the style prepared by UIKit.
