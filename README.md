@@ -192,7 +192,7 @@ MKAIndicator makes you to create the powerful indicator view easily. See followi
 
 ### Most Simple Usage
 
-1. Set the indicator for default
+1. Set the indicator as default is able to use like a singleton
 	
 	```swift
 	// ViewController
@@ -200,7 +200,7 @@ MKAIndicator makes you to create the powerful indicator view easily. See followi
 	override func viewDidLoad() {
 	    super.viewDidLoad()
 
-	    // Set default indicator.
+	    // Set new indicator as default.
 	    MKAIndicator.setDefault(MKAIndicator(activityIndicatorViewStyle: .medium))
 	}
 	```
@@ -225,8 +225,7 @@ The basic type indicator is simple using the style prepared by UIKit.
 ```swift
 // Show the basic indicator.
 let indicator = MKAIndicator(activityIndicatorViewStyle: .medium)
-MKAIndicator.setDefault(indicator)
-MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+indicator.show(in: self.view, withTouchDisabled: false)
 ```
 
 #### Custom Type Indicator
@@ -237,8 +236,7 @@ The custom type indicator uses an indicator image you created or prepared. The i
 // Show the custom indicator with the image.
 let indicator = MKAIndicator(image: UIImage(named: "spinner")!)
     .setAnimationDuration(2.0)
-MKAIndicator.setDefault(indicator)
-MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+indicator.show(in: self.view, withTouchDisabled: false)
 ```
 
 #### Sprite Animation Type Indicator
@@ -249,8 +247,7 @@ The sprite animation type indicator uses indicator images you created or prepare
 // Show the sprite animation indicator.
 let indicator = MKAIndicator(imagesFormat: "indicator%d", count: 8)
     .setAnimationDuration(0.5)
-MKAIndicator.setDefault(indicator)
-MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+indicator.show(in: self.view, withTouchDisabled: false)
 ```
 
 ----
