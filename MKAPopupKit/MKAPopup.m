@@ -203,9 +203,9 @@
 @implementation MKAPopup
 
 - (instancetype)initWithContentView:(UIView *)contentView {
-    CGRect screenRect = [MKAPopupKitHelper keyWindow].subviews.lastObject.bounds;
-
-    if (self = [super initWithFrame:screenRect]) {
+    if (self = [super initWithFrame:CGRectZero]) {
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.4f];
         _canHideWhenTouchUpOutside = YES;
         _showingAnimation = MKAPopupViewAnimationFade;
         _hidingAnimation = MKAPopupViewAnimationFade;
@@ -215,40 +215,13 @@
         _popupView.frame = CGRectMake(0, 0, 320.f, 480.f);
         [self addSubview:_popupView];
 
-        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.4f];
-
         [_popupView.containerView addSubview:contentView];
-
         contentView.translatesAutoresizingMaskIntoConstraints = NO;
-        [_popupView.containerView addConstraints:@[
-            [NSLayoutConstraint constraintWithItem:contentView
-                                         attribute:NSLayoutAttributeLeft
-                                         relatedBy:NSLayoutRelationEqual
-                                            toItem:_popupView.containerView
-                                         attribute:NSLayoutAttributeLeft
-                                        multiplier:1.f
-                                          constant:0],
-            [NSLayoutConstraint constraintWithItem:contentView
-                                         attribute:NSLayoutAttributeTop
-                                         relatedBy:NSLayoutRelationEqual
-                                            toItem:_popupView.containerView
-                                         attribute:NSLayoutAttributeTop
-                                        multiplier:1.f
-                                          constant:0],
-            [NSLayoutConstraint constraintWithItem:contentView
-                                         attribute:NSLayoutAttributeRight
-                                         relatedBy:NSLayoutRelationEqual
-                                            toItem:_popupView.containerView
-                                         attribute:NSLayoutAttributeRight
-                                        multiplier:1.f
-                                          constant:0],
-            [NSLayoutConstraint constraintWithItem:contentView
-                                         attribute:NSLayoutAttributeBottom
-                                         relatedBy:NSLayoutRelationEqual
-                                            toItem:_popupView.containerView
-                                         attribute:NSLayoutAttributeBottom
-                                        multiplier:1.f
-                                          constant:0],
+        [NSLayoutConstraint activateConstraints:@[
+            [contentView.topAnchor constraintEqualToAnchor:_popupView.containerView.topAnchor],
+            [contentView.leftAnchor constraintEqualToAnchor:_popupView.containerView.leftAnchor],
+            [contentView.bottomAnchor constraintEqualToAnchor:_popupView.containerView.bottomAnchor],
+            [contentView.rightAnchor constraintEqualToAnchor:_popupView.containerView.rightAnchor],
         ]];
     }
 
@@ -296,9 +269,9 @@
 }
 
 - (void)setPopupSize:(CGSize)popupSize {
-    CGSize screenSize = self.bounds.size;
-    CGFloat width = popupSize.width < screenSize.width ? popupSize.width : screenSize.width;
-    CGFloat height = popupSize.height < screenSize.height ? popupSize.height : screenSize.height;
+    CGSize screenSize = [MKAPopupKitHelper rootView].bounds.size;
+    CGFloat width = MIN(popupSize.width, screenSize.width);
+    CGFloat height = MIN(popupSize.height, screenSize.height);
     self.popupView.bounds = (CGRect) { { 0, 0 }, { width, height } };
 }
 
@@ -321,17 +294,26 @@
         [self.delegate popupWillAppear:self];
     }
 
-    self.alpha = 0;
-    [self.popupView beginShowingAnimation:animation rootView:self];
+    UIView *rootView = [MKAPopupKitHelper rootView];
 
-    [[MKAPopupKitHelper keyWindow].subviews.lastObject addSubview:self];
+    // Resets states for showing animation.
+    self.alpha = 0;
+    [self.popupView beginShowingAnimation:animation rootView:rootView];
+
+    [rootView addSubview:self];
+    [NSLayoutConstraint activateConstraints:@[
+        [self.topAnchor constraintEqualToAnchor:rootView.topAnchor],
+        [self.leftAnchor constraintEqualToAnchor:rootView.leftAnchor],
+        [self.bottomAnchor constraintEqualToAnchor:rootView.bottomAnchor],
+        [self.rightAnchor constraintEqualToAnchor:rootView.rightAnchor],
+    ]];
 
     __weak typeof(self) weakSelf = self;
 
+    // Starts showing animation.
     [UIView animateWithDuration:.3 animations:^{
         weakSelf.alpha = 1.0;
     }];
-
     [self.popupView showWithAnimation:animation
                              duration:duration
                            completion:^(BOOL finished) {
