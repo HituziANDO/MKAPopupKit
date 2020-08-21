@@ -39,8 +39,11 @@
             [self setActivityIndicatorViewStyleAndResize:UIActivityIndicatorViewStyleMedium];
         }
         else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             [self setActivityIndicatorViewStyleAndResize:UIActivityIndicatorViewStyleGray];
         }
+#pragma clang diagnostic pop
     }
 
     return self;
@@ -75,12 +78,15 @@
         }
     }
     else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         if (activityIndicatorViewStyle == UIActivityIndicatorViewStyleWhiteLarge) {
             self.indicatorView.bounds = CGRectMake(0, 0, 64.f, 64.f);
         }
         else {  // Gray or White
             self.indicatorView.bounds = CGRectMake(0, 0, 32.f, 32.f);
         }
+#pragma clang diagnostic pop
     }
 }
 

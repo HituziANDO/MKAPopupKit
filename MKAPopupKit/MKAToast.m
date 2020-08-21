@@ -26,6 +26,8 @@
 
 #import "MKAToast.h"
 
+#import "MKAPopupKitHelper.h"
+
 const CGFloat MKAToastDefaultWidth = 300.f;
 const CGFloat MKAToastDefaultHeight = 80.f;
 
@@ -194,7 +196,7 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
 
 - (void)show {
     // Places horizontal center adding margin bottom.
-    UIView *view = [self rootView];
+    UIView *view = [MKAPopupKitHelper rootView];
     [self showAtLocation:CGPointMake(view.center.x, view.frame.size.height - 56.f - self.frame.size.height / 2.f)];
 }
 
@@ -203,7 +205,7 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
         [self.delegate toastWillAppear:self];
     }
 
-    UIView *view = [self rootView];
+    UIView *view = [MKAPopupKitHelper rootView];
     [view addSubview:self];
     self.center = center;
 
@@ -293,10 +295,6 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
                              [self.delegate toastDidDisappear:self];
                          }
                      }];
-}
-
-- (UIView *)rootView {
-    return [UIApplication sharedApplication].keyWindow.subviews.lastObject;
 }
 
 @end

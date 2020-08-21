@@ -61,7 +61,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                              "Indicator(Basic)",
                              "Indicator(Custom)",
                              "Indicator(Sprite)",
-                             "Hide Indicator"]
+                             "Hide Indicator",
+                             "Indicator (Disable User Interaction)"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,21 +177,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 // Show the basic indicator.
                 let indicator = MKAIndicator(activityIndicatorViewStyle: .medium)
                 MKAIndicator.setDefault(indicator)
-                MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+                MKAIndicator.default().showIgnoringUserInteraction(false)
             case 12:
                 // Show the custom indicator with the image.
                 let indicator = MKAIndicator(image: UIImage(named: "spinner")!)
-                    .setAnimationDuration(2.0)
+                    .withAnimationDuration(2.0)
                 MKAIndicator.setDefault(indicator)
-                MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+                MKAIndicator.default().showIgnoringUserInteraction(false)
             case 13:
                 // Show the sprite animation indicator.
                 let indicator = MKAIndicator(imagesFormat: "indicator%d", count: 8)
-                    .setAnimationDuration(0.5)
+                    .withAnimationDuration(0.5)
                 MKAIndicator.setDefault(indicator)
-                MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
-            default:
+                MKAIndicator.default().showIgnoringUserInteraction(false)
+            case 14:
                 MKAIndicator.default().hide()
+            case 15:
+                let indicator = MKAIndicator(image: UIImage(named: "spinner")!)
+                    .withAnimationDuration(2.0)
+                    .withOverlayColor(UIColor.white.withAlphaComponent(0.7))
+                // Disable user interaction.
+                indicator.showIgnoringUserInteraction(true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                    indicator.hide()
+                }
+            default:
+                break
         }
     }
 }

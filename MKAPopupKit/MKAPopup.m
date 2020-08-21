@@ -26,6 +26,8 @@
 
 #import "MKAPopup.h"
 
+#import "MKAPopupKitHelper.h"
+
 @implementation MKAPopupLabel
 
 - (instancetype)init {
@@ -201,7 +203,7 @@
 @implementation MKAPopup
 
 - (instancetype)initWithContentView:(UIView *)contentView {
-    CGRect screenRect = UIApplication.sharedApplication.keyWindow.subviews.lastObject.bounds;
+    CGRect screenRect = [MKAPopupKitHelper keyWindow].subviews.lastObject.bounds;
 
     if (self = [super initWithFrame:screenRect]) {
         _canHideWhenTouchUpOutside = YES;
@@ -322,7 +324,7 @@
     self.alpha = 0;
     [self.popupView beginShowingAnimation:animation rootView:self];
 
-    [[UIApplication sharedApplication].keyWindow.subviews.lastObject addSubview:self];
+    [[MKAPopupKitHelper keyWindow].subviews.lastObject addSubview:self];
 
     __weak typeof(self) weakSelf = self;
 

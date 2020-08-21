@@ -41,6 +41,10 @@ typedef NS_ENUM(NSInteger, MKAIndicatorType) {
  * Returns a type of the indicator.
  */
 @property (nonatomic, readonly) MKAIndicatorType indicatorType;
+/**
+ * The overlay's background color.
+ */
+@property (nonatomic) UIColor *overlayColor;
 
 /**
  * Set given indicator as default indicator. You can get it using `+defaultIndicator` method.
@@ -83,82 +87,107 @@ typedef NS_ENUM(NSInteger, MKAIndicatorType) {
  */
 + (instancetype)indicatorWithImagesFormat:(NSString *)format count:(NSInteger)count;
 
+- (void)startAnimating:(BOOL)animating inView:(UIView *)view withTouchDisabled:(BOOL)touchDisabled DEPRECATED_MSG_ATTRIBUTE(
+    "Use `toggle:inView:ignoringUserInteraction:` method instead of this.");
+- (void)startAnimating:(BOOL)animating inView:(UIView *)view atPoint:(CGPoint)point withTouchDisabled:(BOOL)touchDisabled DEPRECATED_MSG_ATTRIBUTE(
+    "Use `toggle:inView:atPoint:ignoringUserInteraction:` method instead of this.");
+- (void)showInView:(UIView *)view withTouchDisabled:(BOOL)touchDisabled DEPRECATED_MSG_ATTRIBUTE(
+    "Use `showInView:ignoringUserInteraction:` method instead of this.");
+- (void)showInView:(UIView *)view atPoint:(CGPoint)point withTouchDisabled:(BOOL)touchDisabled DEPRECATED_MSG_ATTRIBUTE(
+    "Use `showInView:atPoint:ignoringUserInteraction:` method instead of this.");
 /**
- * Show / hide the indicator.
- * If `animating` is YES, the display count is incremented by 1 and the indicator is displayed.
- * If it is NO, the display count is decremented by 1, and when the count becomes 0, the indicator is hidden.
- *
- * @param animating YES if the indicator is displayed.
- * @param view Displays the indicator on specified view.
- * @param touchDisabled If YES, the user can not operate while the indicator is displayed.
- */
-- (void)startAnimating:(BOOL)animating
-                inView:(UIView *)view
-     withTouchDisabled:(BOOL)touchDisabled;
-/**
- * Show / hide the indicator.
- * If `animating` is YES, the display count is incremented by 1 and the indicator is displayed.
- * If it is NO, the display count is decremented by 1, and when the count becomes 0, the indicator is hidden.
- *
- * @param animating YES if the indicator is displayed.
- * @param view Displays the indicator on specified view.
- * @param point The center coordinates of the indicator on the specified view.
- * @param touchDisabled If YES, the user can not operate while the indicator is displayed.
- */
-- (void)startAnimating:(BOOL)animating
-                inView:(UIView *)view
-               atPoint:(CGPoint)point
-     withTouchDisabled:(BOOL)touchDisabled;
-/**
- * The display count is incremented by 1 and the indicator is displayed.
+ * Shows the indicator on the root view at center when any indicator isn't displayed.
  * The indicator will not be displayed in duplicate even if this method is executed more than once.
+ * If this method is executed more than once, the counter that counts displayed indicators is incremented by 1.
  *
- * @param view Displays the indicator on specified view.
- * @param touchDisabled If YES, the user can not operate while the indicator is displayed.
+ * @param isUserInteractionDisabled If YES, the user can not operate while the indicator is displayed.
  */
-- (void)showInView:(UIView *)view withTouchDisabled:(BOOL)touchDisabled;
+- (void)showIgnoringUserInteraction:(BOOL)isUserInteractionDisabled;
 /**
- * The display count is incremented by 1 and the indicator is displayed.
+ * Shows the indicator on specified view at center when any indicator isn't displayed.
  * The indicator will not be displayed in duplicate even if this method is executed more than once.
+ * If this method is executed more than once, the counter that counts displayed indicators is incremented by 1.
  *
- * @param view Displays the indicator on specified view.
- * @param point The center coordinates of the indicator on the specified view.
- * @param touchDisabled If YES, the user can not operate while the indicator is displayed.
+ * @param view Shows the indicator on specified view.
+ * @param isUserInteractionDisabled If YES, the user can not operate while the indicator is displayed.
  */
-- (void)showInView:(UIView *)view atPoint:(CGPoint)point withTouchDisabled:(BOOL)touchDisabled;
+- (void)showInView:(UIView *)view ignoringUserInteraction:(BOOL)isUserInteractionDisabled;
 /**
- * The display count is decremented by 1, and when the count becomes 0, the indicator is hidden.
+ * Shows the indicator on the specified view at specified point when any indicator isn't displayed.
+ * The indicator will not be displayed in duplicate even if this method is executed more than once.
+ * If this method is executed more than once, the counter that counts displayed indicators is incremented by 1.
+ *
+ * @param view Shows the indicator on specified view.
+ * @param point The center coordinates of the indicator on the specified view.
+ * @param isUserInteractionDisabled If YES, the user can not operate while the indicator is displayed.
+ */
+- (void)showInView:(UIView *)view atPoint:(CGPoint)point ignoringUserInteraction:(BOOL)isUserInteractionDisabled;
+/**
+ * Hides the indicator when the counter that counts displayed indicators is equal to 1.
  */
 - (void)hide;
 /**
- * Forcibly hide the indicator by setting the display count to 0.
+ * Hides the indicator forcibly even if the counter that counts displayed indicators is greater than 1.
  */
 - (void)hideForcibly;
 /**
- * Specify a size of the indicator. You can not change the style while displaying.
+ * Executes show method if `show` is YES, otherwise hide method.
  *
- * @param size A size of the view.
+ * @param show YES if the indicator is displayed.
+ * @param isUserInteractionDisabled If YES, the user can not operate while the indicator is displayed.
  */
-- (instancetype)setSize:(CGSize)size;
+- (void)toggle:(BOOL)show ignoringUserInteraction:(BOOL)isUserInteractionDisabled;
 /**
- * Specify the animation speed when `indicatorType` is MKAIndicatorTypeCustom or MKAIndicatorTypeSpriteAnimation.
- * You can not change the style while displaying.
+ * Executes show method if `show` is YES, otherwise hide method.
+ *
+ * @param show YES if the indicator is displayed.
+ * @param view Shows the indicator on specified view.
+ * @param isUserInteractionDisabled If YES, the user can not operate while the indicator is displayed.
+ */
+- (void)toggle:(BOOL)show inView:(UIView *)view ignoringUserInteraction:(BOOL)isUserInteractionDisabled;
+/**
+ * Executes show method if `show` is YES, otherwise hide method.
+ *
+ * @param show YES if the indicator is displayed.
+ * @param view Shows the indicator on specified view.
+ * @param point The center coordinates of the indicator on the specified view.
+ * @param isUserInteractionDisabled If YES, the user can not operate while the indicator is displayed.
+ */
+- (void)toggle:(BOOL)show inView:(UIView *)view atPoint:(CGPoint)point ignoringUserInteraction:(BOOL)isUserInteractionDisabled;
+/**
+ * Sets the size of the indicator. You can not change the style while displaying.
+ *
+ * @param size The size of the view.
+ */
+- (instancetype)withSize:(CGSize)size;
+- (instancetype)setSize:(CGSize)size DEPRECATED_MSG_ATTRIBUTE("Use `withSize:` method instead of this.");
+/**
+ * Sets the animation speed when `indicatorType` is MKAIndicatorTypeCustom or MKAIndicatorTypeSpriteAnimation.
+ * You can not change the style while displaying.
  *
  * @param duration The animation speed (smaller value means faster).
  */
-- (instancetype)setAnimationDuration:(double)duration;
+- (instancetype)withAnimationDuration:(double)duration;
+- (instancetype)setAnimationDuration:(double)duration DEPRECATED_MSG_ATTRIBUTE("Use `withAnimationDuration:` method instead of this.");
 /**
- * Specify the number of animation's iterations when `indicatorType` is MKAIndicatorTypeCustom or MKAIndicatorTypeSpriteAnimation.
- * You can not change the style while displaying.
+ * Sets the number of animation's iterations when `indicatorType` is MKAIndicatorTypeCustom or MKAIndicatorTypeSpriteAnimation.
+ * You can not change the style while displaying.
  *
  * @param repeatCount The number of animation's iterations.
  */
-- (instancetype)setAnimationRepeatCount:(NSInteger)repeatCount;
+- (instancetype)withAnimationRepeatCount:(NSInteger)repeatCount;
+- (instancetype)setAnimationRepeatCount:(NSInteger)repeatCount DEPRECATED_MSG_ATTRIBUTE("Use `withAnimationRepeatCount:` method instead of this.");;
+/**
+ * Sets the overlay's background color.
+ *
+ * @param color The color.
+ */
+- (instancetype)withOverlayColor:(UIColor *)color;
 /**
  * Add the arbitrary background to the indicator.
  * The added background is set on the back. You can not change the style while displaying.
- 
- @param bgView The background view.
+ *
+ * @param bgView The background view.
  */
 - (instancetype)addBackgroundView:(UIView *)bgView;
 /**

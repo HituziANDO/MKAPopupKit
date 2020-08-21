@@ -27,6 +27,7 @@
 #import "MKAActivityIndicatorViewWrapper.h"
 #import "MKACustomIndicatorViewWrapper.h"
 #import "MKAIndicatorInterface.h"
+#import "MKAPopupKitHelper.h"
 #import "MKASpriteAnimationIndicatorViewWrapper.h"
 
 @interface MKAIndicator ()
@@ -34,6 +35,7 @@
 @property (nonatomic) id <MKAIndicatorInterface> indicatorView;
 @property (nonatomic) NSUInteger count;
 @property (nonatomic) MKAIndicatorType indicatorType;
+@property (nonatomic, nullable) UIView *overlay;
 
 @end
 
@@ -97,6 +99,7 @@ static MKAIndicator *_defaultIndicator = nil;
     if (self = [super init]) {
         _indicatorView = [MKAActivityIndicatorViewWrapper new];
         _indicatorType = MKAIndicatorTypeBasic;
+        _overlayColor = [UIColor.blackColor colorWithAlphaComponent:0.05];
     }
 
     return self;
@@ -124,20 +127,19 @@ static MKAIndicator *_defaultIndicator = nil;
 
 #pragma mark - public method
 
-- (void)startAnimating:(BOOL)animating
-                inView:(UIView *)view
-     withTouchDisabled:(BOOL)touchDisabled {
-
+- (void)startAnimating:(BOOL)animating inView:(UIView *)view withTouchDisabled:(BOOL)touchDisabled {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [self startAnimating:animating inView:view atPoint:view.center withTouchDisabled:touchDisabled];
+#pragma clang diagnostic pop
 }
 
-- (void)startAnimating:(BOOL)animating
-                inView:(UIView *)view
-               atPoint:(CGPoint)point
-     withTouchDisabled:(BOOL)touchDisabled {
-
+- (void)startAnimating:(BOOL)animating inView:(UIView *)view atPoint:(CGPoint)point withTouchDisabled:(BOOL)touchDisabled {
     if (animating) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         [self showInView:view atPoint:point withTouchDisabled:touchDisabled];
+#pragma clang diagnostic pop
     }
     else {
         [self hide];
@@ -145,7 +147,10 @@ static MKAIndicator *_defaultIndicator = nil;
 }
 
 - (void)showInView:(UIView *)view withTouchDisabled:(BOOL)touchDisabled {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [self showInView:view atPoint:view.center withTouchDisabled:touchDisabled];
+#pragma clang diagnostic pop
 }
 
 - (void)showInView:(UIView *)view atPoint:(CGPoint)point withTouchDisabled:(BOOL)touchDisabled {
@@ -166,6 +171,35 @@ static MKAIndicator *_defaultIndicator = nil;
     }
 }
 
+- (void)showIgnoringUserInteraction:(BOOL)isUserInteractionDisabled {
+    UIView *view = [MKAPopupKitHelper rootView];
+    [self showInView:view ignoringUserInteraction:isUserInteractionDisabled];
+}
+
+- (void)showInView:(UIView *)view ignoringUserInteraction:(BOOL)isUserInteractionDisabled {
+    [self showInView:view atPoint:view.center ignoringUserInteraction:isUserInteractionDisabled];
+}
+
+- (void)showInView:(UIView *)view atPoint:(CGPoint)point ignoringUserInteraction:(BOOL)isUserInteractionDisabled {
+    ++self.count;
+
+    if (self.count == 1) {
+        if (isUserInteractionDisabled && !self.overlay) {
+            // Adds the overlay view for preventing user interaction events.
+            self.overlay = [[UIView alloc] initWithFrame:view.bounds];
+            self.overlay.backgroundColor = self.overlayColor;
+            [self.overlay setUserInteractionEnabled:YES];
+            [view addSubview:self.overlay];
+        }
+
+        self.indicatorView.view.center = point;
+
+        [view addSubview:self.indicatorView.view];
+
+        [self.indicatorView startAnimating];
+    }
+}
+
 - (void)hide {
     if (!self.isVisible) {
         return;
@@ -177,6 +211,9 @@ static MKAIndicator *_defaultIndicator = nil;
         [self.indicatorView stopAnimating];
 
         [self.indicatorView.view removeFromSuperview];
+
+        [self.overlay removeFromSuperview];
+        self.overlay = nil;
 
         if ([UIApplication sharedApplication].isIgnoringInteractionEvents) {
             // Enables user touch events.
@@ -196,13 +233,34 @@ static MKAIndicator *_defaultIndicator = nil;
 
     [self.indicatorView.view removeFromSuperview];
 
+    [self.overlay removeFromSuperview];
+    self.overlay = nil;
+
     if ([UIApplication sharedApplication].isIgnoringInteractionEvents) {
         // Enables user touch events.
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }
 }
 
-- (instancetype)setSize:(CGSize)size {
+- (void)toggle:(BOOL)show ignoringUserInteraction:(BOOL)isUserInteractionDisabled {
+    UIView *view = [MKAPopupKitHelper rootView];
+    [self toggle:show inView:view ignoringUserInteraction:isUserInteractionDisabled];
+}
+
+- (void)toggle:(BOOL)show inView:(UIView *)view ignoringUserInteraction:(BOOL)isUserInteractionDisabled {
+    [self toggle:show inView:view atPoint:view.center ignoringUserInteraction:isUserInteractionDisabled];
+}
+
+- (void)toggle:(BOOL)show inView:(UIView *)view atPoint:(CGPoint)point ignoringUserInteraction:(BOOL)isUserInteractionDisabled {
+    if (show) {
+        [self showInView:view atPoint:point ignoringUserInteraction:isUserInteractionDisabled];
+    }
+    else {
+        [self hide];
+    }
+}
+
+- (instancetype)withSize:(CGSize)size {
     if (self.isVisible) {
         return self;
     }
@@ -212,7 +270,11 @@ static MKAIndicator *_defaultIndicator = nil;
     return self;
 }
 
-- (instancetype)setAnimationDuration:(double)duration {
+- (instancetype)setSize:(CGSize)size {
+    return [self withSize:size];
+}
+
+- (instancetype)withAnimationDuration:(double)duration {
     if (self.isVisible) {
         return self;
     }
@@ -227,7 +289,11 @@ static MKAIndicator *_defaultIndicator = nil;
     return self;
 }
 
-- (instancetype)setAnimationRepeatCount:(NSInteger)repeatCount {
+- (instancetype)setAnimationDuration:(double)duration {
+    return [self withAnimationDuration:duration];
+}
+
+- (instancetype)withAnimationRepeatCount:(NSInteger)repeatCount {
     if (self.isVisible) {
         return self;
     }
@@ -239,6 +305,15 @@ static MKAIndicator *_defaultIndicator = nil;
         ((MKASpriteAnimationIndicatorViewWrapper *) self.indicatorView).repeatCount = repeatCount;
     }
 
+    return self;
+}
+
+- (instancetype)setAnimationRepeatCount:(NSInteger)repeatCount {
+    return [self withAnimationRepeatCount:repeatCount];
+}
+
+- (instancetype)withOverlayColor:(UIColor *)color {
+    self.overlayColor = color;
     return self;
 }
 

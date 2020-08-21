@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5E91322D24EF5F0B00070EF6 /* MKAPopupKitHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E91322B24EF5F0B00070EF6 /* MKAPopupKitHelper.h */; };
+		5E91322E24EF5F0B00070EF6 /* MKAPopupKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E91322C24EF5F0B00070EF6 /* MKAPopupKitHelper.m */; };
 		5E95716722572AC4009C37CA /* MKAPopupKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E95716522572AC4009C37CA /* MKAPopupKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E95719E22578B38009C37CA /* MKAPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E95719C22578B38009C37CA /* MKAPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E95719F22578B38009C37CA /* MKAPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95719D22578B38009C37CA /* MKAPopup.m */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E91322B24EF5F0B00070EF6 /* MKAPopupKitHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAPopupKitHelper.h; sourceTree = "<group>"; };
+		5E91322C24EF5F0B00070EF6 /* MKAPopupKitHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKAPopupKitHelper.m; sourceTree = "<group>"; };
 		5E95716222572AC4009C37CA /* MKAPopupKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKAPopupKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E95716522572AC4009C37CA /* MKAPopupKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAPopupKit.h; sourceTree = "<group>"; };
 		5E95716622572AC4009C37CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				5EE9566D24A5F874004E903F /* MKACustomIndicatorViewWrapper.m */,
 				5EE9566624A5F874004E903F /* MKAIndicatorInterface.h */,
 				5EE9566C24A5F874004E903F /* MKAIndicatorInterface.m */,
+				5E91322B24EF5F0B00070EF6 /* MKAPopupKitHelper.h */,
+				5E91322C24EF5F0B00070EF6 /* MKAPopupKitHelper.m */,
 				5EE9566B24A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.h */,
 				5EE9566724A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.m */,
 			);
@@ -124,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E95716722572AC4009C37CA /* MKAPopupKit.h in Headers */,
+				5E91322D24EF5F0B00070EF6 /* MKAPopupKitHelper.h in Headers */,
 				5E95719E22578B38009C37CA /* MKAPopup.h in Headers */,
 				5EE9567424A5F874004E903F /* MKAActivityIndicatorViewWrapper.h in Headers */,
 				5EE9566124A5F866004E903F /* MKAIndicator.h in Headers */,
@@ -228,6 +235,7 @@
 				5ED705E324218070003EBC0A /* MKAToast.m in Sources */,
 				5EE9567624A5F874004E903F /* MKAIndicatorInterface.m in Sources */,
 				5E95719F22578B38009C37CA /* MKAPopup.m in Sources */,
+				5E91322E24EF5F0B00070EF6 /* MKAPopupKitHelper.m in Sources */,
 				5EE9567124A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.m in Sources */,
 				5EE9566224A5F866004E903F /* MKAIndicator.m in Sources */,
 				5EE9566F24A5F874004E903F /* MKAActivityIndicatorViewWrapper.m in Sources */,
@@ -306,7 +314,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -363,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -390,7 +398,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.MKAPopupKit;
 				PRODUCT_NAME = MKAPopupKit;
 				SKIP_INSTALL = YES;
@@ -414,7 +422,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.hituzi.MKAPopupKit;
 				PRODUCT_NAME = MKAPopupKit;
 				SKIP_INSTALL = YES;

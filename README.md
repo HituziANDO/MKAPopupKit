@@ -6,8 +6,8 @@ MKAPopupKit is the framework provides simple and customizable popup view for iOS
 
 ## Require
 
-- iOS 9.3+
-- Xcode 11.3+
+- iOS 13.0+
+- Xcode 11.6+
 
 ## Get Started
 ### Install Framework to Your iOS App
