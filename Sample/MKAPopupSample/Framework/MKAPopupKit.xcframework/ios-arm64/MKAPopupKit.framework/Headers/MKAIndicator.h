@@ -178,6 +178,12 @@ typedef NS_ENUM(NSInteger, MKAIndicatorType) {
 - (instancetype)withAnimationRepeatCount:(NSInteger)repeatCount;
 - (instancetype)setAnimationRepeatCount:(NSInteger)repeatCount DEPRECATED_MSG_ATTRIBUTE("Use `withAnimationRepeatCount:` method instead of this.");;
 /**
+ * Sets the overlay's background color.
+ *
+ * @param color The color.
+ */
+- (instancetype)withOverlayColor:(UIColor *)color;
+/**
  * Add the arbitrary background to the indicator.
  * The added background is set on the back. You can not change the style while displaying.
  *

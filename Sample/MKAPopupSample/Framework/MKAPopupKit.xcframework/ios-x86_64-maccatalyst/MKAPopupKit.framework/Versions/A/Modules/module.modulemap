@@ -1,0 +1,6 @@
+framework module MKAPopupKit {
+  umbrella header "MKAPopupKit.h"
+
+  export *
+  module * { export * }
+}
