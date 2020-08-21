@@ -2,7 +2,9 @@
 
 MKAPopupKit is the framework provides simple and customizable popup view for iOS. See following samples.
 
+<center>
 <img src="./README/popup1.gif" width="200"/> <img src="./README/popup2.gif" width="200"/>
+</center>
 
 ## Require
 
@@ -38,7 +40,9 @@ If you use Carthage to build your dependencies, make sure you have added MKAPopu
 1. Download latest [MKAPopupKit](https://github.com/HituziANDO/MKAPopupKit/releases) framework and copy it into your Xcode project
 1. Open the "General" panel
 1. Click on the + button under the "Frameworks, Libraries and Embedded Content" section
-1. After click "Add Other...", choose MKAPopupKit.framework
+1. After click "Add Other...", choose MKAPopupKit.xcframework
+
+<center><img src="README/xcframework.png"></center>
 
 
 ### Quick Usage
@@ -141,7 +145,9 @@ The MKAPopup has some animations showing and hiding the popup.
 
 The toast is the view that disappears automatically after displaying a short message for a few seconds. It is inspired by Android's Toast.
 
+<center>
 <img src="./README/toast1.gif" width="200"/>
+</center>
 
 ### Most Simple Usage
 
@@ -260,6 +266,32 @@ let indicator = MKAIndicator(image: UIImage(named: "spinner")!)
     .withOverlayColor(UIColor.white.withAlphaComponent(0.7))
 // Show the indicator and disable user interaction.
 indicator.showIgnoringUserInteraction(true)
+```
+
+## Bottom Sheet
+
+<center><img src="README/bottomsheet.gif" width="200"></center>
+
+### Usage
+
+```swift
+// Creates your content view.
+let contentView = ...YOUR CONTENT VIEW CREATION...
+
+// Creates the bottom sheet object.
+let bottomSheet = MKABottomSheet(contentView: contentView)
+
+// Sets the sheet height.
+bottomSheet.sheetHeight = 320.0
+
+// Sets the delegate (for MKAPopupDelegate).
+bottomSheet.delegate = self
+
+// Shows the bottom sheet.
+bottomSheet.show()
+
+// Hides the bottom sheet.
+bottomSheet.hide()
 ```
 
 ----
