@@ -62,7 +62,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                              "Indicator(Custom)",
                              "Indicator(Sprite)",
                              "Hide Indicator",
-                             "Indicator (Disable User Interaction)"]
+                             "Indicator (Disable User Interaction)",
+                             "Bottom Sheet"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -201,6 +202,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                     indicator.hide()
                 }
+            case 16:
+                let contentView = TextContentView.fromNib(name: String(describing: TextContentView.self))
+                let bottomSheet = MKABottomSheet(contentView: contentView)
+                bottomSheet.sheetHeight = 320.0
+                bottomSheet.delegate = self
+                bottomSheet.tag = 100
+                contentView.click = { bottomSheet.hide() }
+                bottomSheet.show()
             default:
                 break
         }

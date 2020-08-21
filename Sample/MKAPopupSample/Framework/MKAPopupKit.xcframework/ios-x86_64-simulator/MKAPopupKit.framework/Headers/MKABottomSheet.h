@@ -1,9 +1,7 @@
 //
-// MKAPopupKit
-//
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
-//
 // MIT License
+//
+// Copyright (c) 2020-present Hituzi Ando
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,15 +24,31 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for MKAPopupKit.
-FOUNDATION_EXPORT double MKAPopupKitVersionNumber;
-
-//! Project version string for MKAPopupKit.
-FOUNDATION_EXPORT const unsigned char MKAPopupKitVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <MKAPopupKit/PublicHeader.h>
-
-#import "MKABottomSheet.h"
-#import "MKAIndicator.h"
 #import "MKAPopup.h"
-#import "MKAToast.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface MKABottomSheet : MKAPopup
+/**
+ * A sheet's height.
+ */
+@property (nonatomic) CGFloat sheetHeight;
+
+/**
+ * Creates an instance with a content view.
+ *
+ * @param contentView Main content view.
+ * @return An instance.
+ */
+- (instancetype)initWithContentView:(__kindof UIView *)contentView;
+
+/**
+ * Sets the height of the bottom sheet.
+ *
+ * @param height A sheet's height.
+ */
+- (instancetype)withSheetHeight:(CGFloat)height;
+
+@end
+
+NS_ASSUME_NONNULL_END

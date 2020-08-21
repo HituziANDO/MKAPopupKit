@@ -202,6 +202,18 @@
 
 @implementation MKAPopup
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"%s is not implemented. Use `-initWithContentView:` method instead of it", __FUNCTION__]
+                                 userInfo:nil];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"%s is not implemented. Use `-initWithContentView:` method instead of it", __FUNCTION__]
+                                 userInfo:nil];
+}
+
 - (instancetype)initWithContentView:(UIView *)contentView {
     if (self = [super initWithFrame:CGRectZero]) {
         self.translatesAutoresizingMaskIntoConstraints = NO;
@@ -226,18 +238,6 @@
     }
 
     return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"%s is not implemented. Use `-initWithContentView:` method instead of it", __FUNCTION__]
-                                 userInfo:nil];
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"%s is not implemented. Use `-initWithContentView:` method instead of it", __FUNCTION__]
-                                 userInfo:nil];
 }
 
 - (void)layoutSubviews {

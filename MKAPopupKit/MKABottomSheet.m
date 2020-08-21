@@ -1,9 +1,7 @@
 //
-// MKAPopupKit
-//
-// Copyright (c) 2019-present Hituzi Ando. All rights reserved.
-//
 // MIT License
+//
+// Copyright (c) 2020-present Hituzi Ando
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,17 +22,40 @@
 // SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
-
-//! Project version number for MKAPopupKit.
-FOUNDATION_EXPORT double MKAPopupKitVersionNumber;
-
-//! Project version string for MKAPopupKit.
-FOUNDATION_EXPORT const unsigned char MKAPopupKitVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <MKAPopupKit/PublicHeader.h>
-
 #import "MKABottomSheet.h"
-#import "MKAIndicator.h"
-#import "MKAPopup.h"
-#import "MKAToast.h"
+
+@implementation MKABottomSheet
+
+- (instancetype)initWithContentView:(__kindof UIView *)contentView {
+    if (self = [super initWithContentView:contentView]) {
+        self.showingAnimation = MKAPopupViewAnimationSlideUp;
+        self.hidingAnimation = MKAPopupViewAnimationSlideDown;
+        self.sheetHeight = 300.f;
+    }
+
+    return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    self.popupView.frame = CGRectMake(0, 0, self.frame.size.width, self.sheetHeight);
+    self.popupView.center = CGPointMake(self.frame.size.width / 2.f, self.frame.size.height - self.sheetHeight / 2.f);
+}
+
+#pragma mark - public method
+
+- (CGFloat)sheetHeight {
+    return self.popupSize.height;
+}
+
+- (void)setSheetHeight:(CGFloat)sheetHeight {
+    self.popupSize = CGSizeMake(0, sheetHeight);
+}
+
+- (instancetype)withSheetHeight:(CGFloat)height {
+    self.sheetHeight = height;
+    return self;
+}
+
+@end

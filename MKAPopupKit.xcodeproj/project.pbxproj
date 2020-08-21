@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		5E91322D24EF5F0B00070EF6 /* MKAPopupKitHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E91322B24EF5F0B00070EF6 /* MKAPopupKitHelper.h */; };
 		5E91322E24EF5F0B00070EF6 /* MKAPopupKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E91322C24EF5F0B00070EF6 /* MKAPopupKitHelper.m */; };
+		5E91323624EF9F6E00070EF6 /* MKABottomSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E91323424EF9F6E00070EF6 /* MKABottomSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E91323724EF9F6E00070EF6 /* MKABottomSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E91323524EF9F6E00070EF6 /* MKABottomSheet.m */; };
 		5E95716722572AC4009C37CA /* MKAPopupKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E95716522572AC4009C37CA /* MKAPopupKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E95719E22578B38009C37CA /* MKAPopup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E95719C22578B38009C37CA /* MKAPopup.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E95719F22578B38009C37CA /* MKAPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E95719D22578B38009C37CA /* MKAPopup.m */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		5E91322B24EF5F0B00070EF6 /* MKAPopupKitHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAPopupKitHelper.h; sourceTree = "<group>"; };
 		5E91322C24EF5F0B00070EF6 /* MKAPopupKitHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKAPopupKitHelper.m; sourceTree = "<group>"; };
+		5E91323424EF9F6E00070EF6 /* MKABottomSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKABottomSheet.h; sourceTree = "<group>"; };
+		5E91323524EF9F6E00070EF6 /* MKABottomSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKABottomSheet.m; sourceTree = "<group>"; };
 		5E95716222572AC4009C37CA /* MKAPopupKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKAPopupKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E95716522572AC4009C37CA /* MKAPopupKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKAPopupKit.h; sourceTree = "<group>"; };
 		5E95716622572AC4009C37CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 			children = (
 				5E95716622572AC4009C37CA /* Info.plist */,
 				5EE9566324A5F874004E903F /* Internal */,
+				5E91323424EF9F6E00070EF6 /* MKABottomSheet.h */,
+				5E91323524EF9F6E00070EF6 /* MKABottomSheet.m */,
 				5EE9565F24A5F866004E903F /* MKAIndicator.h */,
 				5EE9566024A5F866004E903F /* MKAIndicator.m */,
 				5E95719C22578B38009C37CA /* MKAPopup.h */,
@@ -133,6 +139,7 @@
 				5E91322D24EF5F0B00070EF6 /* MKAPopupKitHelper.h in Headers */,
 				5E95719E22578B38009C37CA /* MKAPopup.h in Headers */,
 				5EE9567424A5F874004E903F /* MKAActivityIndicatorViewWrapper.h in Headers */,
+				5E91323624EF9F6E00070EF6 /* MKABottomSheet.h in Headers */,
 				5EE9566124A5F866004E903F /* MKAIndicator.h in Headers */,
 				5EE9567524A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.h in Headers */,
 				5EE9567224A5F874004E903F /* MKACustomIndicatorViewWrapper.h in Headers */,
@@ -238,6 +245,7 @@
 				5E91322E24EF5F0B00070EF6 /* MKAPopupKitHelper.m in Sources */,
 				5EE9567124A5F874004E903F /* MKASpriteAnimationIndicatorViewWrapper.m in Sources */,
 				5EE9566224A5F866004E903F /* MKAIndicator.m in Sources */,
+				5E91323724EF9F6E00070EF6 /* MKABottomSheet.m in Sources */,
 				5EE9566F24A5F874004E903F /* MKAActivityIndicatorViewWrapper.m in Sources */,
 				5EE9567724A5F874004E903F /* MKACustomIndicatorViewWrapper.m in Sources */,
 			);
