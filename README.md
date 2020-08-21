@@ -208,7 +208,7 @@ MKAIndicator makes you to create the powerful indicator view easily. See followi
 1. Show the indicator
 		
 	```swift
-	MKAIndicator.default().show(in: self.view, withTouchDisabled: false)
+	MKAIndicator.default().showIgnoringUserInteraction(false)
 	```
 
 1. Hide the indicator
@@ -225,7 +225,7 @@ The basic type indicator is simple using the style prepared by UIKit.
 ```swift
 // Show the basic indicator.
 let indicator = MKAIndicator(activityIndicatorViewStyle: .medium)
-indicator.show(in: self.view, withTouchDisabled: false)
+indicator.showIgnoringUserInteraction(false)
 ```
 
 #### Custom Type Indicator
@@ -235,8 +235,8 @@ The custom type indicator uses an indicator image you created or prepared. The i
 ```swift
 // Show the custom indicator with the image.
 let indicator = MKAIndicator(image: UIImage(named: "spinner")!)
-    .setAnimationDuration(2.0)
-indicator.show(in: self.view, withTouchDisabled: false)
+    .withAnimationDuration(2.0)
+indicator.showIgnoringUserInteraction(false)
 ```
 
 #### Sprite Animation Type Indicator
@@ -246,8 +246,20 @@ The sprite animation type indicator uses indicator images you created or prepare
 ```swift
 // Show the sprite animation indicator.
 let indicator = MKAIndicator(imagesFormat: "indicator%d", count: 8)
-    .setAnimationDuration(0.5)
-indicator.show(in: self.view, withTouchDisabled: false)
+    .withAnimationDuration(0.5)
+indicator.showIgnoringUserInteraction(false)
+```
+
+### Disable User Intraction
+
+When ignoring user interaction is true, the user can not operate while the indicator is displayed.
+
+```swift
+let indicator = MKAIndicator(image: UIImage(named: "spinner")!)
+    .withAnimationDuration(2.0)
+    .withOverlayColor(UIColor.white.withAlphaComponent(0.7))
+// Show the indicator and disable user interaction.
+indicator.showIgnoringUserInteraction(true)
 ```
 
 ----
