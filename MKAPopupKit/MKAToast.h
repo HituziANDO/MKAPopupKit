@@ -204,4 +204,9 @@ UIKIT_EXTERN const NSTimeInterval MKAToastTimeForever;
 
 @end
 
+/**
+ * Shows the toast view in specified time. After fading out, it is separated from the parent view.
+ */
+UIKIT_EXTERN MKAToast *MKAToastShow(NSString *text, NSTimeInterval time);
+
 NS_ASSUME_NONNULL_END

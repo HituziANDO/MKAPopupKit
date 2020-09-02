@@ -298,3 +298,9 @@ static NSMutableDictionary<NSString *, MKAToastStyleConfiguration *> *_styleConf
 }
 
 @end
+
+MKAToast *MKAToastShow(NSString *text, NSTimeInterval time) {
+    MKAToast *toast = [[MKAToast toastWithText:text] withTime:time];
+    [toast show];
+    return toast;
+}
